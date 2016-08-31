@@ -45,9 +45,8 @@ class nucleDict(object):
             finalDict[i] = par
         return finalDict
     
-    def savetoFile(self, textDict):
+    def savetoFile(self, sent):
         '''Save dictionary values to text file'''
-        sent = textDict.value()
         with open(self.fileName, 'w') as f:
             #Separate line for each sentence
             for line in sent:
@@ -55,7 +54,6 @@ class nucleDict(object):
                 for s in inline:
                     if s != "\n": 
                         f.write(s.lstrip()+".\n")
-        return sent
         
     def generateCorr(self):
         '''This saves the silly NUCLE corpus into a data structure that can be used to generate corrected essays'''
@@ -92,9 +90,10 @@ class nucleDict(object):
         '''This def uses the stored sentence corrections from generateCorr'''
         MistakeLoc = self.generateCorr()
         incorrData = self.generateOrig()
-        finalCor = []
+        finalData = []
         for DocId, _ in incorrData.iteritems():   
             for parId, listOfCor in MistakeLoc[DocId].iteritems():
+                #Holder for corrected sentence
                 incorrSent = incorrData[DocId][int(parId)]
                 correctedMofo = deepcopy(incorrSent)
                 for i in range(0, len(listOfCor)-1):
@@ -103,14 +102,24 @@ class nucleDict(object):
                         startCor = int(listOfCor[i-1]['startCor'])
                         endCor = int(listOfCor[i-1]['EndCor'])
                         replace = incorrSent[startCor:endCor]
-                        correctedMofo = correctedMofo.replace(replace, corrWord, 1)
-                finalCor.append(correctedMofo)
-            return list(set(finalCor))
-    def dictGen(self):
-        '''This takes the generated corrected corpus and turns it into a dictionary'''
+                        correctedMofo = correctedMofo.replace(replace+" ", " "+corrWord+" ", 1)
+                finalData.append(correctedMofo)
+        return finalData
+    
+    def dictGen(self, TextList):
+        '''This takes the generated corpus and turns it into a training dictionary'''
+        OutSym = ["<blank> 1", "<unk> 2", "<s> 3","</s> 4"]
+        setOf = set(TextList)
+        count = 5
+        for lex in setOf:
+            entry = lex+" "+str(count)
+            OutSym.append(entry)
+            count = count+1
+        return OutSym
         
     def evalGen(self):
-        '''This takes in the input and target inputs and splits into the train, test and eval sets for training'''
-    
+        '''This takes in the input and target inputs and splits into the train, test and eval sets for training
+        '''
+        
     if __name__ == '__main__':
         pass
