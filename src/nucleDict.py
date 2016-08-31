@@ -59,13 +59,13 @@ class nucleDict(object):
         
     def generateCorr(self):
         '''This generates the corrected sentences from the corrected NUCLE corpus'''
+        Deets= {}
+        DocId = None
+        parId = None
+        corrDeets ={}
         with open(self.fileName) as fileobject: 
             while(True):
                 try:
-                    Deets= {}
-                    DocId = None
-                    parId = None
-                    corrDeets ={}
                     for line in fileobject: 
                         if "<DOC" in line.split():
                             DocId = re.findall(r'"(.*?)"', line)[0] 
@@ -86,6 +86,7 @@ class nucleDict(object):
                     fileobject.next()
                 except StopIteration:
                     break  
+        return Deets
             
     def dictGen(self):
         '''This takes the generated corrected corpus and turns it into a dictionary'''
