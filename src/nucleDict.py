@@ -92,22 +92,22 @@ class nucleDict(object):
         '''This def uses the stored sentence corrections from generateCorr'''
         MistakeLoc = self.generateCorr()
         incorrData = self.generateOrig()
-        print MistakeLoc
-        for DocId, ParDic in incorrData.iteritems():
-            print ParDic
-            for ParNo, incorrSent in ParDic.iteritems():    
-                #TO DO:
-                #CONFIRM docID
-                #        parID
-                #Proceed with correction
-                #Add correction to set
-                """for p, t in MistakeLoc[DocId].iteritems():
-                    for i in range(0, len(t)-1):
-                        if i%2 ==0:
-                            print t[i]
-                            print t[i+1]
-                            print incorrSent
-                            #print incorrSent[:int(t[i]['startCor'])]+t[i+1]+incorrSent[int(t[i]['EndCor']):]"""
+
+        for DocId, _ in incorrData.iteritems():   
+            count = 0
+            for parId, listOfCor in MistakeLoc[DocId].iteritems():
+                #Holder for corrected sentence
+                incorrSent = incorrData[DocId][int(parId)]
+                correctedMofo = deepcopy(incorrSent)
+                for i in range(0, len(listOfCor)-1):
+                    if isinstance(listOfCor[i], str) and count <=2:
+                        corrWord = listOfCor[i]
+                        startCor = int(listOfCor[i-1]['startCor'])
+                        endCor = int(listOfCor[i-1]['EndCor'])
+                        replace = incorrSent[startCor:endCor]
+                        correctedMofo = correctedMofo.replace(replace, corrWord, 1)
+                        print "right?==>"+correctedMofo
+                        count = count+1
     def dictGen(self):
         '''This takes the generated corrected corpus and turns it into a dictionary'''
         
