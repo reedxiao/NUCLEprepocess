@@ -98,15 +98,19 @@ class nucleDict(object):
                 correctedMofo = deepcopy(incorrSent)
                 for i in range(0, len(listOfCor)-1):
                     if isinstance(listOfCor[i], str):
-                        corrWord = listOfCor[i]
                         startCor = int(listOfCor[i-1]['startCor'])
                         endCor = int(listOfCor[i-1]['EndCor'])
-                        replace = incorrSent[startCor:endCor]+incorrSent[endCor:endCor+3]
-                        correctedMofo = correctedMofo.replace(replace, corrWord+incorrSent[endCor:endCor+3], 1)
-                        print "correct word==>"+corrWord+incorrSent[endCor:endCor+3]
-                        print "word to be corrected==>"+replace
-                        print correctedMofo
+                        tempCorrWord = listOfCor[i]
+                        corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
+                        
+                        replace = incorrSent[startCor:endCor+3]
+                        correctedMofo = correctedMofo.replace(replace, corrWord, 1)
+            
+                        #print "correct word==>"+corrWord
+                        #print "word to be corrected==>"+replace
+                        #print correctedMofo
                 finalData.append(correctedMofo)
+        print finalData
         return finalData
     
     def dictGen(self, TextList):
