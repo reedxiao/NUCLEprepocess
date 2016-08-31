@@ -6,4 +6,4 @@ Created on 23/08/2016
 import nucleDict
 fileName = "official.sgml"
 text = nucleDict.nucleDict(fileName)
-text.generateOrig()
+text.generateCorEssays()

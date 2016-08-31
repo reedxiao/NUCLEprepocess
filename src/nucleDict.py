@@ -58,7 +58,7 @@ class nucleDict(object):
         return sent
         
     def generateCorr(self):
-        '''This generates the corrected sentences from the corrected NUCLE corpus'''
+        '''This saves the silly NUCLE corpus into a data structure that can be used to generate corrected essays'''
         Deets= {}
         DocId = None
         parId = None
@@ -87,10 +87,21 @@ class nucleDict(object):
                 except StopIteration:
                     break  
         return Deets
-            
+    
+    def generateCorEssays(self):
+        '''This def uses the stored sentence corrections from generateCorr'''
+        MistakeLoc = self.generateCorr()
+        incorrData = self.generateOrig()
+        print incorrData
+        print MistakeLoc
+        for DocId, Par in incorrData.iteritems():
+            for ParNo, incorrSent in Par.iteritems():
+                for p, t in MistakeLoc[DocId].iteritems():
+                    for i in range(len(t)):
+                        print i
     def dictGen(self):
         '''This takes the generated corrected corpus and turns it into a dictionary'''
-    
+        
     def evalGen(self):
         '''This takes in the input and target inputs and splits into the train, test and eval sets for training'''
     
