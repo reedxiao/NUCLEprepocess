@@ -3,6 +3,8 @@ Created on 23/08/2016
 @author: Kiarie Ndegwa
 '''
 import re
+import string
+
 from copy import deepcopy
 
 class nucleDict(object):
@@ -44,10 +46,17 @@ class nucleDict(object):
                 par[n] = v[n]
             finalDict[i] = par
         return finalDict
-    
-    def savetoFile(self, sent):
+    @staticmethod
+    def collapseDict(dictEntry):
+        outputList = []
+        for _, v in dictEntry.iteritems():
+            for _, nv in v.iteritems():
+                outputList.append(nv)
+        return outputList
+        
+    def savetoFile(self, sent, newFilename):
         '''Save dictionary values to text file'''
-        with open(self.fileName, 'w') as f:
+        with open(newFilename, 'w') as f:
             #Separate line for each sentence
             for line in sent:
                 inline = line.split(".")
@@ -57,6 +66,7 @@ class nucleDict(object):
         
     def generateCorr(self):
         '''This saves the silly NUCLE corpus into a data structure that can be used to generate corrected essays'''
+        #To do: Make this come out in the same order as the orig text, it has to be a parallel corpus
         Deets= {}
         DocId = None
         parId = None
@@ -105,12 +115,10 @@ class nucleDict(object):
                         
                         replace = incorrSent[startCor:endCor+3]
                         correctedMofo = correctedMofo.replace(replace, corrWord, 1)
-            
                         #print "correct word==>"+corrWord
                         #print "word to be corrected==>"+replace
                         #print correctedMofo
                 finalData.append(correctedMofo)
-        print finalData
         return finalData
     
     def dictGen(self, TextList):
@@ -124,9 +132,12 @@ class nucleDict(object):
             count = count+1
         return OutSym
         
-    def evalGen(self):
+    def evalGen(self, input, target):
         '''This takes in the input and target inputs and splits into the train, test and eval sets for training
         '''
+        num_linesInput = sum(1 for line in open(input))
+        num_linesTarget = sum(1 for line in open(input))
+        
         
     if __name__ == '__main__':
         pass
