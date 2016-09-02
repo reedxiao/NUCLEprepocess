@@ -3,6 +3,7 @@ Created on 23/08/2016
 @author: Kiarie Ndegwa
 '''
 import re
+import nltk
 import string
 
 from copy import deepcopy
@@ -46,6 +47,7 @@ class nucleDict(object):
                 par[n] = v[n]
             finalDict[i] = par
         return finalDict
+    
     @staticmethod
     def collapseDict(dictEntry):
         outputList = []
@@ -55,7 +57,7 @@ class nucleDict(object):
         return outputList
         
     def savetoFile(self, sent, newFilename):
-        '''Save dictionary values to text file'''
+        '''Save list of sentences to text file'''
         with open(newFilename, 'w') as f:
             #Separate line for each sentence
             for line in sent:
@@ -122,22 +124,47 @@ class nucleDict(object):
         return finalData
     
     def dictGen(self, TextList):
-        '''This takes the generated corpus and turns it into a training dictionary'''
+        #This takes the generated corpus and turns it into a training dictionary
         OutSym = ["<blank> 1", "<unk> 2", "<s> 3","</s> 4"]
-        setOf = set(TextList)
+        setOf = set()
         count = 5
-        for lex in setOf:
-            entry = lex+" "+str(count)
-            OutSym.append(entry)
-            count = count+1
+        exclude = set(string.punctuation)
+        for lex in TextList:
+            sentence = nltk.sent_tokenize(lex)
+            for words in sentence:
+                wordList = nltk.word_tokenize(words)
+                for entry in wordList:
+                    if entry not in exclude and entry not in setOf and entry.isdigit() == False:
+                        dictWord = entry+" "+str(count)
+                        setOf.add(entry)
+                        OutSym.append(dictWord)
+                        count = count+1
         return OutSym
         
-    def evalGen(self, input, target):
-        '''This takes in the input and target inputs and splits into the train, test and eval sets for training
+    def evalGen(self, input, src_or_targ):
+        '''This takes in the input and splits it into the train, test and eval sets for training
         '''
         num_linesInput = sum(1 for line in open(input))
-        num_linesTarget = sum(1 for line in open(input))
+        train = int(round(0.6*num_linesInput))
+        evalD =  int(round(0.3*num_linesInput))
         
+        trainList = []
+        evalList = []
+        testList = []
+        
+        for i in input:
+            if(i <= train):
+                trainList.append(i)
+            elif(i<=evalD):
+                evalList.append(i)
+            else:
+                testList.append(i)
+        #Generate training data and save to file
+        self.savetoFile(trainList, src_or_targ+"train.txt")
+        #Generate test data and Save to file
+        self.savetoFile(evalList, src_or_targ+"val.txt")
+        #Generate evaluation data and Save to file
+        self.savetoFile(testList, src_or_targ+"test.txt")
         
     if __name__ == '__main__':
         pass
