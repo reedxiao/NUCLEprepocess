@@ -141,30 +141,34 @@ class nucleDict(object):
                         count = count+1
         return OutSym
         
-    def evalGen(self, input, src_or_targ):
+    def evalGen(self, inputtxtfile, src_or_targ):
         '''This takes in the input and splits it into the train, test and eval sets for training
         '''
-        num_linesInput = sum(1 for line in open(input))
+        num_linesInput = sum(1 for line in open(inputtxtfile))
         train = int(round(0.6*num_linesInput))
         evalD =  int(round(0.3*num_linesInput))
         
         trainList = []
         evalList = []
         testList = []
-        
-        for i in input:
-            if(i <= train):
-                trainList.append(i)
-            elif(i<=evalD):
-                evalList.append(i)
-            else:
-                testList.append(i)
+        count = 0
+        with open(inputtxtfile) as fileobject:
+            for i in fileobject:
+                if(count <= train):
+                    trainList.append(i)
+                elif(count > train and count <=train+evalD):
+                    evalList.append(i)
+                else:
+                    testList.append(i)
+                    
+                count = count +1
+                print count
         #Generate training data and save to file
-        self.savetoFile(trainList, src_or_targ+"train.txt")
+        self.savetoFile(trainList, src_or_targ+"-train.txt")
         #Generate test data and Save to file
-        self.savetoFile(evalList, src_or_targ+"val.txt")
+        self.savetoFile(evalList, src_or_targ+"-val.txt")
         #Generate evaluation data and Save to file
-        self.savetoFile(testList, src_or_targ+"test.txt")
+        self.savetoFile(testList, src_or_targ+"-test.txt")
         
     if __name__ == '__main__':
         pass
