@@ -5,6 +5,7 @@ Created on 23/08/2016
 import re
 import nltk
 import string
+import collections
 
 from copy import deepcopy
 
@@ -26,6 +27,7 @@ class nucleDict(object):
         '''
         parDict = {}
         DocId = None
+        print "GENERATING ORIGINAL TEXT"
         with open(self.fileName) as fileobject: 
             while(True):
                 try:
@@ -39,19 +41,27 @@ class nucleDict(object):
                     fileobject.next()
                 except StopIteration:
                     break
-
         finalDict = {}
         for i, v in parDict.iteritems():
             par = {}
             for n in range(len(v)):
                 par[n] = v[n]
             finalDict[i] = par
+        #Sort dictionary, by turning it into a generator 
+        finalDict = self.sortdict(finalDict)
         return finalDict
     
     @staticmethod
-    def collapseDict(dictEntry):
+    def sortdict(d, **opts):
+    # **opts so any currently supported sorted() options can be passed
+    #Also returns a generator that can be iterated over simply
+        for k in sorted(d, **opts):
+            yield k, d[k]
+    
+    @staticmethod
+    def collapseDict(genEntry):
         outputList = []
-        for _, v in dictEntry.iteritems():
+        for _, v in genEntry:
             for _, nv in v.iteritems():
                 outputList.append(nv)
         return outputList
@@ -103,9 +113,17 @@ class nucleDict(object):
         MistakeLoc = self.generateCorr()
         incorrData = self.generateOrig()
         finalData = []
-        for DocId, _ in incorrData.iteritems():   
-            for parId, listOfCor in MistakeLoc[DocId].iteritems():
-                #Holder for corrected sentence
+        print "GENERATING CORRECT SENTENCES"
+        incorrData = {c[0]:c[1] for c in incorrData}
+        incorrData = collections.OrderedDict(sorted(incorrData.items()))
+        for DocId, _ in incorrData.iteritems(): 
+            #Sort items in mistakeLoc
+            #for parId, listOfCor in MistakeLoc[DocId].iteritems():
+            print DocId
+            check = 0
+            for parId, listOfCor in collections.OrderedDict(sorted(MistakeLoc[DocId].items())).iteritems():
+                
+                print "Par id: "+parId
                 incorrSent = incorrData[DocId][int(parId)]
                 correctedMofo = deepcopy(incorrSent)
                 for i in range(0, len(listOfCor)-1):
