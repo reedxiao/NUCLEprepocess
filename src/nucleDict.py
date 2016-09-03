@@ -117,27 +117,20 @@ class nucleDict(object):
         incorrData = {c[0]:c[1] for c in incorrData}
         incorrData = collections.OrderedDict(sorted(incorrData.items()))
         for DocId, _ in incorrData.iteritems(): 
-            #Sort items in mistakeLoc
-            #for parId, listOfCor in MistakeLoc[DocId].iteritems():
-            print DocId
-            check = 0
             for parId, listOfCor in collections.OrderedDict(sorted(MistakeLoc[DocId].items())).iteritems():
-                
-                print "Par id: "+parId
                 incorrSent = incorrData[DocId][int(parId)]
                 correctedMofo = deepcopy(incorrSent)
-                for i in range(0, len(listOfCor)-1):
+                for i in range(0, len(listOfCor)):
                     if isinstance(listOfCor[i], str):
                         startCor = int(listOfCor[i-1]['startCor'])
                         endCor = int(listOfCor[i-1]['EndCor'])
                         tempCorrWord = listOfCor[i]
                         corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
-                        
                         replace = incorrSent[startCor:endCor+3]
                         correctedMofo = correctedMofo.replace(replace, corrWord, 1)
                         #print "correct word==>"+corrWord
                         #print "word to be corrected==>"+replace
-                        #print correctedMofo
+                #print correctedMofo
                 finalData.append(correctedMofo)
         return finalData
     
