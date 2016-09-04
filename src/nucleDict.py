@@ -6,6 +6,7 @@ import re
 import nltk
 import string
 import collections
+from nltk.tokenize import sent_tokenize
 
 from copy import deepcopy
 
@@ -27,7 +28,6 @@ class nucleDict(object):
         '''
         parDict = {}
         DocId = None
-        print "GENERATING ORIGINAL TEXT"
         with open(self.fileName) as fileobject: 
             while(True):
                 try:
@@ -53,7 +53,7 @@ class nucleDict(object):
     @staticmethod
     def collapseDict(genEntry):
         outputList = []
-        for _, v in genEntry:
+        for _, v in genEntry.iteritems():
             for _, nv in v.iteritems():
                 outputList.append(nv)
         return outputList
@@ -63,14 +63,14 @@ class nucleDict(object):
         with open(newFilename, 'w') as f:
             #Separate line for each sentence
             for line in sent:
-                inline = line.split(".")
+                inline =  sent_tokenize(line)
                 for s in inline:
-                    if s != "\n": 
-                        s = s.replace(' ,', ',')
-                        if flag == True:
-                            f.write(s.lstrip()+".\n")
-                        else:
-                            f.write(s.lstrip()+"\n")
+                    s = s.replace(' ,', ',')
+                    s = s.replace('\n', '')
+                    if flag == True:                                      
+                        f.write(s.lstrip()+"\n")
+                    else:
+                        f.write(s.lstrip()+"\n")
         print newFilename+" file saved"
         
     def generateCorr(self):
@@ -111,17 +111,18 @@ class nucleDict(object):
         finalData = []
         for DocId, _ in incorrData.iteritems(): 
             for parId, listOfCor in collections.OrderedDict(sorted(MistakeLoc[DocId].items())).iteritems():
-                incorrSent = incorrData[DocId][int(parId)]
-                correctedMofo = deepcopy(incorrSent)
-                for i in range(0, len(listOfCor)):
-                    if isinstance(listOfCor[i], str):
-                        startCor = int(listOfCor[i-1]['startCor'])
-                        endCor = int(listOfCor[i-1]['EndCor'])
-                        tempCorrWord = listOfCor[i]
-                        corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
-                        replace = incorrSent[startCor:endCor+3]
-                        correctedMofo = correctedMofo.replace(replace, corrWord, 1)
-                finalData.append(correctedMofo)
+                if int(parId) in [int(i) for i in incorrData[DocId].keys()]:
+                    incorrSent = incorrData[DocId][int(parId)]
+                    correctedMofo = deepcopy(incorrSent)
+                    for i in range(0, len(listOfCor)):
+                        if isinstance(listOfCor[i], str):
+                            startCor = int(listOfCor[i-1]['startCor'])
+                            endCor = int(listOfCor[i-1]['EndCor'])
+                            tempCorrWord = listOfCor[i]
+                            corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
+                            replace = incorrSent[startCor:endCor+3]
+                            correctedMofo = correctedMofo.replace(replace, corrWord, 1)
+                    finalData.append(correctedMofo)
         return finalData
     
     def dictGen(self, TextList):

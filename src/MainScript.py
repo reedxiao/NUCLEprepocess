@@ -6,15 +6,14 @@ finished 4/08/2016
 '''
 
 import nucleDict
-from docutils.parsers.rst.directives import flag
 fileName = "official.sgml"
 text = nucleDict.nucleDict(fileName)
 
 #Generate parallel original corpus
 text.savetoFile(text.generateCorEssays(), "targetOrig.txt", True)
-text.savetoFile(text.generateOrig(), "sourceOrig.txt", True)
+text.savetoFile(text.collapseDict(text.generateOrig()), "sourceOrig.txt", True)
 #Generate dictionaries
-text.savetoFile(text.dictGen(text.generateOrig()), "sourceOrig.dict", False)
+text.savetoFile(text.dictGen(text.collapseDict(text.generateOrig())), "sourceOrig.dict", False)
 text.savetoFile(text.dictGen(text.generateCorEssays()), "targetOrig.dict", False)
 
 #Generate training, testing and eval test sets
