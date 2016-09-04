@@ -47,17 +47,9 @@ class nucleDict(object):
             for n in range(len(v)):
                 par[n] = v[n]
             finalDict[i] = par
-        #Sort dictionary, by turning it into a generator 
-        finalDict = self.sortdict(finalDict)
+        finalDict = collections.OrderedDict(sorted(finalDict.items()))
         return finalDict
-    
-    @staticmethod
-    def sortdict(d, **opts):
-    # **opts so any currently supported sorted() options can be passed
-    #Also returns a generator that can be iterated over simply
-        for k in sorted(d, **opts):
-            yield k, d[k]
-    
+
     @staticmethod
     def collapseDict(genEntry):
         outputList = []
@@ -66,7 +58,7 @@ class nucleDict(object):
                 outputList.append(nv)
         return outputList
         
-    def savetoFile(self, sent, newFilename):
+    def savetoFile(self, sent, newFilename, flag):
         '''Save list of sentences to text file'''
         with open(newFilename, 'w') as f:
             #Separate line for each sentence
@@ -74,11 +66,15 @@ class nucleDict(object):
                 inline = line.split(".")
                 for s in inline:
                     if s != "\n": 
-                        f.write(s.lstrip()+".\n")
+                        s = s.replace(' ,', ',')
+                        if flag == True:
+                            f.write(s.lstrip()+".\n")
+                        else:
+                            f.write(s.lstrip()+"\n")
+        print newFilename+" file saved"
         
     def generateCorr(self):
         '''This saves the silly NUCLE corpus into a data structure that can be used to generate corrected essays'''
-        #To do: Make this come out in the same order as the orig text, it has to be a parallel corpus
         Deets= {}
         DocId = None
         parId = None
@@ -113,9 +109,6 @@ class nucleDict(object):
         MistakeLoc = self.generateCorr()
         incorrData = self.generateOrig()
         finalData = []
-        print "GENERATING CORRECT SENTENCES"
-        incorrData = {c[0]:c[1] for c in incorrData}
-        incorrData = collections.OrderedDict(sorted(incorrData.items()))
         for DocId, _ in incorrData.iteritems(): 
             for parId, listOfCor in collections.OrderedDict(sorted(MistakeLoc[DocId].items())).iteritems():
                 incorrSent = incorrData[DocId][int(parId)]
@@ -128,9 +121,6 @@ class nucleDict(object):
                         corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
                         replace = incorrSent[startCor:endCor+3]
                         correctedMofo = correctedMofo.replace(replace, corrWord, 1)
-                        #print "correct word==>"+corrWord
-                        #print "word to be corrected==>"+replace
-                #print correctedMofo
                 finalData.append(correctedMofo)
         return finalData
     
@@ -171,15 +161,13 @@ class nucleDict(object):
                     evalList.append(i)
                 else:
                     testList.append(i)
-                    
-                count = count +1
-                print count
+                count = count +1       
         #Generate training data and save to file
-        self.savetoFile(trainList, src_or_targ+"-train.txt")
+        self.savetoFile(trainList, src_or_targ+"-train.txt", True)
         #Generate test data and Save to file
-        self.savetoFile(evalList, src_or_targ+"-val.txt")
+        self.savetoFile(evalList, src_or_targ+"-val.txt", True)
         #Generate evaluation data and Save to file
-        self.savetoFile(testList, src_or_targ+"-test.txt")
+        self.savetoFile(testList, src_or_targ+"-test.txt", True)
         
     if __name__ == '__main__':
         pass
