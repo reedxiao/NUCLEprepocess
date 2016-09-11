@@ -6,6 +6,8 @@ import re
 import nltk
 import string
 import collections
+import BSoupExtract
+
 from nltk.tokenize import sent_tokenize
 
 from copy import deepcopy
@@ -23,7 +25,7 @@ class nucleDict(object):
         self.corrected = self.generateCorr()
    
     def generateOrig(self):
-        '''Generates text from NUCLE .sgml format to plain txt
+        '''Generates text from NUCLE .sgml format to plain useable data structure
         .sgml file ==> {DocId: {ParID: Text string}}
         '''
         parDict = {}
@@ -65,7 +67,10 @@ class nucleDict(object):
             for line in sent:
                 inline =  sent_tokenize(line)
                 for s in inline:
-                    s = s.replace(' ,', ',')
+                    s = s.replace('!', ' !')
+                    s = s.replace('.', ' .')
+                    s = s.replace(',', ' ,')
+                    s = s.replace('?', ' ?')
                     s = s.replace('\n', '')
                     if flag == True:                                      
                         f.write(s.lstrip()+"\n")
@@ -95,6 +100,8 @@ class nucleDict(object):
                                 corrDeets[parId] = []
                             corrDeets[parId].append(mist)       
                         corrections = re.findall('<CORRECTION>(.*?)</CORRECTION>', line, re.DOTALL) 
+                        #to do:
+                        #Make sure you do something with the fact that something with the collocation errors
                         if len(corrections)!=0:
                             corr = corrections.pop()
                             corrDeets[parId].append(corr)                      
@@ -124,7 +131,7 @@ class nucleDict(object):
                             correctedMofo = correctedMofo.replace(replace, corrWord, 1)
                     finalData.append(correctedMofo)
         return finalData
-    
+     
     def dictGen(self, TextList):
         #This takes the generated corpus and turns it into a training dictionary
         OutSym = ["<blank> 1", "<unk> 2", "<s> 3","</s> 4"]
@@ -169,6 +176,20 @@ class nucleDict(object):
         self.savetoFile(evalList, src_or_targ+"-val.txt", True)
         #Generate evaluation data and Save to file
         self.savetoFile(testList, src_or_targ+"-test.txt", True)
-        
+    
+    def Opt1collocationError(self):
+        #The target sentence generated only fixes the collocation errors and ignores all else
+        #The source corpus is the unchanged 
+        dictOrigin = BSoupExtract.BSoupExtract(self.fileName).extractSentences()
+        docIDs = [int(i) for i in dictOrigin.keys()]
+        docIDs.sort()
+        #Get sentences witb collocation errors 
+        print docIDs
+    
+    def Opt2collocationError(self, textList):
+        #Source corpus has all corrections but the collocation errors
+        #Target sentence has isolated collocation sentences
+        pass
+    
     if __name__ == '__main__':
         pass
