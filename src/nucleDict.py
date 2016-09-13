@@ -190,34 +190,33 @@ class nucleDict(object):
         for i in docIDs:
             t = (re.findall('<MISTAKE(.*?)</MISTAKE>', dictOrigin[str(i)], re.DOTALL), i)
             mistakeTags.append(t)
-
         errorCorr = []
-        print mistakeTags
+        sent = self.uncorrected
+        
         for mistakes in mistakeTags:
             for mistake in mistakes[0]:
                 err = re.findall('<TYPE>(Wci)</TYPE>(.*?)<CORRECTION>(.*?)</CORRECTION>', mistake, re.DOTALL)
                 #Sentence coordinates
                 locStart = re.findall('start_off="(.*?)"', mistake, re.DOTALL)
                 locEnd = re.findall('end_off="(.*?)">', mistake, re.DOTALL)
-                SentCoord = ("start_id="+locStart.pop(), "end_id="+locEnd.pop())
+                SentCoord = ("start_id="+locStart[0], "end_id="+locEnd[0])
                 #Paragraph coordinates
                 SParCoord = re.findall('start_par="(.*?)"', mistake, re.DOTALL)
                 EParCoord = re.findall('end_par="(.*?)"', mistake, re.DOTALL)
-                ParCoord = ("start_par="+SParCoord.pop(), "end_par="+EParCoord.pop())
+                ParCoord = ("start_par="+SParCoord[0], "end_par="+EParCoord[0])
                 #Get sentence that needs to be corrected?
                 if len(err)!=0:
                     fin = []
                     f = re.findall('<TYPE>Wci</TYPE>\n(.*?)<CORRECTION>(.*?)</CORRECTION>', mistake, re.DOTALL)
                     if f[0][1]=='':
-                        print "blank"
-                        print mistakes[1]
-                    fin = (f[0][1], SentCoord, "Doc id: "+str(mistakes[1]), ParCoord)
-                    print fin
-        print "string gen"
-        #print errorType  
-        print errorCorr          
-        
-    
+                        chop = sent[str(mistakes[1])].get(int(SParCoord[0]))
+                        tobeCorr = chop[int(locStart[0]):int(locEnd[0])]
+                    chop = sent[str(mistakes[1])].get(int(SParCoord[0]))  
+                    tobeCorr =  None
+                    if chop !=None:
+                        tobeCorr = chop[int(locStart[0]):int(locEnd[0])]
+                    fin = (f[0][1], tobeCorr, SentCoord, "Doc id: "+str(mistakes[1]), ParCoord)
+            print fin
     def Opt2collocationError(self, textList):
         #Source corpus has all corrections but the collocation errors
         #Target sentence has isolated collocation sentences
