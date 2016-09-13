@@ -11,6 +11,7 @@ import BSoupExtract
 from nltk.tokenize import sent_tokenize
 
 from copy import deepcopy
+from errno import errorcode
 
 class nucleDict(object):
     '''
@@ -181,10 +182,41 @@ class nucleDict(object):
         #The target sentence generated only fixes the collocation errors and ignores all else
         #The source corpus is the unchanged 
         dictOrigin = BSoupExtract.BSoupExtract(self.fileName).extractSentences()
-        docIDs = [int(i) for i in dictOrigin.keys()]
+        #print dictOrigin.keys()
+        docIDs = [int(i) for i in dictOrigin.keys()]	        
         docIDs.sort()
-        #Get sentences witb collocation errors 
-        print docIDs
+
+        mistakeTags = []
+        for i in docIDs:
+            t = (re.findall('<MISTAKE(.*?)</MISTAKE>', dictOrigin[str(i)], re.DOTALL), i)
+            mistakeTags.append(t)
+
+        errorCorr = []
+        print mistakeTags
+        for mistakes in mistakeTags:
+            for mistake in mistakes[0]:
+                err = re.findall('<TYPE>(Wci)</TYPE>(.*?)<CORRECTION>(.*?)</CORRECTION>', mistake, re.DOTALL)
+                #Sentence coordinates
+                locStart = re.findall('start_off="(.*?)"', mistake, re.DOTALL)
+                locEnd = re.findall('end_off="(.*?)">', mistake, re.DOTALL)
+                SentCoord = ("start_id="+locStart.pop(), "end_id="+locEnd.pop())
+                #Paragraph coordinates
+                SParCoord = re.findall('start_par="(.*?)"', mistake, re.DOTALL)
+                EParCoord = re.findall('end_par="(.*?)"', mistake, re.DOTALL)
+                ParCoord = ("start_par="+SParCoord.pop(), "end_par="+EParCoord.pop())
+                #Get sentence that needs to be corrected?
+                if len(err)!=0:
+                    fin = []
+                    f = re.findall('<TYPE>Wci</TYPE>\n(.*?)<CORRECTION>(.*?)</CORRECTION>', mistake, re.DOTALL)
+                    if f[0][1]=='':
+                        print "blank"
+                        print mistakes[1]
+                    fin = (f[0][1], SentCoord, "Doc id: "+str(mistakes[1]), ParCoord)
+                    print fin
+        print "string gen"
+        #print errorType  
+        print errorCorr          
+        
     
     def Opt2collocationError(self, textList):
         #Source corpus has all corrections but the collocation errors

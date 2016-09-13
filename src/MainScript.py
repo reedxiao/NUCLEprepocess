@@ -4,14 +4,14 @@ finished 4/08/2016
 
 @author: kiarie ndegwa
 '''
-
+import BSoupExtract
 import nucleDict
 fileName = "official.sgml"
 text = nucleDict.nucleDict(fileName)
-#test = BSoupExtract.BSoupExtract(fileName, "MISTAKE")
-#yotest = test.extract('41')
-#print yotest
-text.Opt1collocationError()
+test = BSoupExtract.BSoupExtract(fileName).extract('41', "MISTAKE")
+
+#print test
+print text.Opt1collocationError()
 #Generate parallel original corpus
 #text.savetoFile(text.generateCorEssays(), "targetOrig.txt", True)
 #text.savetoFile(text.collapseDict(text.generateOrig()), "sourceOrig.txt", True)
