@@ -7,11 +7,12 @@ import nltk
 import string
 import collections
 import BSoupExtract
+import os
 
 from nltk.tokenize import sent_tokenize
 
 from copy import deepcopy
-from errno import errorcode
+
 
 class nucleDict(object):
     '''
@@ -20,11 +21,12 @@ class nucleDict(object):
     2. target and original text dictionaries needed to train the word2vec model 
     All features are hand crafted and this code is specific to the NUCLE corpus
     '''
-    def __init__(self, fileName):
+    def __init__(self, fileName, foldername):
         self.fileName = fileName
         self.uncorrected = self.generateOrig()
         self.corrected = self.generateCorr()
-   
+        self.foldername = foldername
+        
     def generateOrig(self):
         '''Generates text from NUCLE .sgml format to plain useable data structure
         .sgml file ==> {DocId: {ParID: Text string}}
@@ -47,7 +49,7 @@ class nucleDict(object):
         finalDict = {}
         for i, v in parDict.iteritems():
             par = {}
-            for n in range(len(v)):
+            for n in range(0, len(v)-1):
                 par[n] = v[n]
             finalDict[i] = par
         finalDict = collections.OrderedDict(sorted(finalDict.items()))
@@ -63,7 +65,30 @@ class nucleDict(object):
         
     def savetoFile(self, sent, newFilename, flag):
         '''Save list of sentences to text file'''
-        with open(newFilename, 'w') as f:
+        foldername = "../"+self.foldername
+        if not os.path.exists(os.path.dirname(foldername)):
+            try:
+                os.makedirs(os.path.dirname(foldername))
+                #Add text files to the folder
+                path = os.path.join(foldername, newFilename)
+                with open(path, 'w') as f:
+                    #Separate line for each sentence
+                    for line in sent:
+                        inline =  sent_tokenize(line)
+                        for s in inline:
+                            s = s.replace('!', ' !')
+                            s = s.replace('.', ' .')
+                            s = s.replace(',', ' ,')
+                            s = s.replace('?', ' ?')
+                            #s = s.replace('\n', '')
+                            if flag == True:                                      
+                                f.write(s.lstrip())
+                            else:
+                                f.write(s.lstrip())              
+            except OSError as exc:
+                raise
+        path = os.path.join(foldername, newFilename)
+        with open(path, 'w') as f:
             #Separate line for each sentence
             for line in sent:
                 inline =  sent_tokenize(line)
@@ -117,21 +142,32 @@ class nucleDict(object):
         MistakeLoc = self.generateCorr()
         incorrData = self.generateOrig()
         finalData = []
-        for DocId, _ in incorrData.iteritems(): 
+        incord = []
+        print "incorrData keys"
+        print incorrData.itervalues().next()
+        
+        print "mistakes locations"
+        print MistakeLoc.itervalues().next()
+        
+        #TO DO 
+        #What the hell is going on here with regards to the data structures
+        #Do the list of corrections and the list of the original texts line up at all?
+        for DocId, DictOfParIDs in incorrData.iteritems(): 
             for parId, listOfCor in collections.OrderedDict(sorted(MistakeLoc[DocId].items())).iteritems():
                 if int(parId) in [int(i) for i in incorrData[DocId].keys()]:
                     incorrSent = incorrData[DocId][int(parId)]
+                    incord.append(incorrSent)
                     correctedMofo = deepcopy(incorrSent)
                     for i in range(0, len(listOfCor)):
                         if isinstance(listOfCor[i], str):
                             startCor = int(listOfCor[i-1]['startCor'])
                             endCor = int(listOfCor[i-1]['EndCor'])
-                            tempCorrWord = listOfCor[i]
+                            tempCorrWord = listOfCor[i]                        
                             corrWord = re.sub(' +',' ',tempCorrWord+" "+incorrSent[endCor:endCor+3])
                             replace = incorrSent[startCor:endCor+3]
                             correctedMofo = correctedMofo.replace(replace, corrWord, 1)
                     finalData.append(correctedMofo)
-        return finalData
+        return finalData, incord
      
     def dictGen(self, TextList):
         #This takes the generated corpus and turns it into a training dictionary
@@ -165,10 +201,10 @@ class nucleDict(object):
         with open(inputtxtfile) as fileobject:
             for i in fileobject:
                 if(count <= train):
-                    trainList.append(i)
+                    trainList.append(i) 
                 elif(count > train and count <=train+evalD):
-                    evalList.append(i)
-                else:
+                    evalList.append(i) 
+                elif(count > train+evalD):
                     testList.append(i)
                 count = count +1       
         #Generate training data and save to file
@@ -192,7 +228,6 @@ class nucleDict(object):
             mistakeTags.append(t)
         errorCorr = []
         sent = self.uncorrected
-        
         for mistakes in mistakeTags:
             for mistake in mistakes[0]:
                 err = re.findall('<TYPE>(Wci)</TYPE>(.*?)<CORRECTION>(.*?)</CORRECTION>', mistake, re.DOTALL)
@@ -216,7 +251,7 @@ class nucleDict(object):
                     if chop !=None:
                         tobeCorr = chop[int(locStart[0]):int(locEnd[0])]
                     fin = (f[0][1], tobeCorr, SentCoord, "Doc id: "+str(mistakes[1]), ParCoord)
-            print fin
+            #print fin
     def Opt2collocationError(self, textList):
         #Source corpus has all corrections but the collocation errors
         #Target sentence has isolated collocation sentences
