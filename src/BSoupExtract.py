@@ -4,7 +4,10 @@ Created on 11/09/2016
 Possible better way to parse .sgml format
 '''
 import re
+import os
+
 from copy import deepcopy
+from nltk.tokenize import sent_tokenize
 
 class BSoupExtract(object):
     '''
@@ -51,22 +54,27 @@ class BSoupExtract(object):
         #Return dict of mista
         text = self.extracted[docId]
         tag = "<MISTAKE(.*?)\n</MISTAKE>"
+        
         mistList = re.findall(tag, text, re.DOTALL)
         mistDict ={}
+
         for i in mistList:
+
             parId = re.findall("start_par=\"(.*?)\"", i).pop()
-            type = re.findall("<TYPE>(.*?)</TYPE>", i).pop()
+
+            typeE = re.findall("<TYPE>(.*?)</TYPE>", i).pop()
             correction = re.findall("<CORRECTION>(.*?)</CORRECTION>", i)[0]
             start_corr = re.findall("start_off=\"(.*?)\"", i)[0]
-            end_corr = re.findall("end_off=\"(.*?)\"", i).pop()
+            end_corr = re.findall("end_off=\"(.*?)\"", i)[0]
             
             corrDict ={}
-            corrDict[(docId, start_corr, end_corr)] = (correction, type)
-            
+            corrDict[(docId, start_corr, end_corr)] = (correction, typeE)
+
             if (docId, parId) not in mistDict.keys():
                 mistDict[(docId, parId)] = []
-            else:
                 mistDict[(docId, parId)].append(corrDict)
+            else:
+                mistDict[(docId, parId)].append(corrDict) 
         return mistDict
     
     def extractParagraph(self, docId):
@@ -84,23 +92,42 @@ class BSoupExtract(object):
         corrections = self.extractMistakesAndCorrection(docId)
         origPar = self.extractParagraph(docId)
         genSentences = deepcopy(origPar)
-        #TO do:
-        #Find means of correction sentences/paragraph using replace
+
         finalCorr = {}
-        print corrections[('41', '0')]
         for i, v in corrections.iteritems():
-            if i == ('41', '0'):
+            sToBeCorr = deepcopy(genSentences[i]) 
+            for l in v:
+                                
+                start = int(l.keys()[0][1])
+                end = int(l.keys()[0][2])
                 
-                sToBeCorr = deepcopy(genSentences[i]) 
-                for l in v:                
-                    start = int(l.keys()[0][1])
-                    end = int(l.keys()[0][2])
-                    
-                    cphrase = l.values()[0][0]+origPar[i][end:end+4]
-                    ctype = l.values()[0][1]
-                    print cphrase
-                    if ctype != typeEr:
-                        sToBeCorr = sToBeCorr.replace(origPar[i][start:end+4], cphrase, 1)            
-                finalCorr[i] = sToBeCorr
-            
-        print finalCorr['41', '0']
+                cphrase = l.values()[0][0]+origPar[i][end:end+10]
+                ctype = l.values()[0][1]
+
+                if ctype != typeEr:
+                    sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)            
+            finalCorr[i] = sToBeCorr
+        return finalCorr
+    
+    def savetoFile(self, sent, newFilename, foldername):
+        '''Save list of paragraphs and saves to text file'''
+        foldername = "../"+foldername
+        if not os.path.exists(os.path.dirname(foldername)):
+            try:
+                os.makedirs(os.path.dirname(foldername))
+                #Add text files to the folder
+                path = os.path.join(foldername, newFilename)
+                with open(path, 'w') as f:
+                    #Separate line for each sentence
+                    for line in sent:
+                        inline =  sent_tokenize(line)
+                        for s in inline:
+                            s = s.replace('!', ' !')
+                            s = s.replace('.', ' .')
+                            s = s.replace(',', ' ,')
+                            s = s.replace('?', ' ?')        
+                            f.write(s.lstrip())    
+                print newFilename+" file saved"
+                                   
+            except OSError as exc:
+                raise

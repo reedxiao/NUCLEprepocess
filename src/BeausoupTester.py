@@ -9,4 +9,4 @@ test2 = BSoupExtract.BSoupExtract(fileName).extractMistakesAndCorrection('41')
 #print test2.keys()
 
 test3 = BSoupExtract.BSoupExtract(fileName).genCorrections('41', 'Wci')
-print test3
+print test3.keys()

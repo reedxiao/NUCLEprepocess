@@ -84,25 +84,10 @@ class nucleDict(object):
                             if flag == True:                                      
                                 f.write(s.lstrip())
                             else:
-                                f.write(s.lstrip())              
+                                f.write(s.lstrip())   
+                print newFilename+" file saved"           
             except OSError as exc:
                 raise
-        path = os.path.join(foldername, newFilename)
-        with open(path, 'w') as f:
-            #Separate line for each sentence
-            for line in sent:
-                inline =  sent_tokenize(line)
-                for s in inline:
-                    s = s.replace('!', ' !')
-                    s = s.replace('.', ' .')
-                    s = s.replace(',', ' ,')
-                    s = s.replace('?', ' ?')
-                    s = s.replace('\n', '')
-                    if flag == True:                                      
-                        f.write(s.lstrip()+"\n")
-                    else:
-                        f.write(s.lstrip()+"\n")
-        print newFilename+" file saved"
         
     def generateCorr(self):
         '''This saves the silly NUCLE corpus into a data structure that can be used to generate corrected essays'''
