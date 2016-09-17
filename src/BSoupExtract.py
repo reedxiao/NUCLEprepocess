@@ -134,7 +134,9 @@ class BSoupExtract(object):
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
         #TO do:
         #Make sure that you can add from uncorrected dictionary all keys that are not present in corrected dictionary
-        
+        for k, v in UncorrectedEssays.iteritems():
+            if k not in CorrectedEssays.keys():
+                CorrectedEssays[k] = v
         return UncorrectedEssays, CorrectedEssays
     
     def savetoFile(self, sent, newFilename, foldername):

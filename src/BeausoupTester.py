@@ -13,7 +13,7 @@ test2 = BSoupExtract.BSoupExtract(fileName).extractMistakesAndCorrection('26')
 test3 = BSoupExtract.BSoupExtract(fileName).genCorrections('20', 'Wci')
 
 test4a, test4b = BSoupExtract.BSoupExtract(fileName).preSave()
-print test4a[('10', '0')]
-print test4b[('10', '0')]
+print (test4a[('10', '1')])
+print (test4b[('10', '1')])
 #TO do:
 #Extract and save to file somehow'''
