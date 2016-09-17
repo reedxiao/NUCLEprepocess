@@ -4001,334 +4001,330 @@ People needs a safe environment to live in, and also needs a private environment
 </P>
 </TEXT>
 <ANNOTATION teacher_id="6">
-<MISTAKE start_par="0" start_off="5" end_par="0" end_off="8">
-<TYPE>ArtOrDet</TYPE>
-<CORRECTION></CORRECTION>
-</MISTAKE>
-<MISTAKE start_par="1" start_off="9" end_par="1" end_off="19">
+<MISTAKE start_par="0" start_off="9" end_par="1" end_off="19">
 <TYPE>Wform</TYPE>
 <CORRECTION>development</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="68" end_par="1" end_off="75">
+<MISTAKE start_par="0" start_off="68" end_par="1" end_off="75">
 <TYPE>Vt</TYPE>
 <CORRECTION>has appeared</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="89" end_par="1" end_off="103">
+<MISTAKE start_par="0" start_off="89" end_par="1" end_off="103">
 <TYPE>Wci</TYPE>
 <CORRECTION>quality of life</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="104" end_par="1" end_off="108">
+<MISTAKE start_par="0" start_off="104" end_par="1" end_off="108">
 <TYPE>Vt</TYPE>
 <CORRECTION>has risen</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="227" end_par="1" end_off="230">
+<MISTAKE start_par="0" start_off="227" end_par="1" end_off="230">
 <TYPE>Prep</TYPE>
 <CORRECTION>in</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="275" end_par="1" end_off="286">
+<MISTAKE start_par="0" start_off="275" end_par="1" end_off="286">
 <TYPE>Vt</TYPE>
 <CORRECTION>have also emerged</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="303" end_par="1" end_off="305">
+<MISTAKE start_par="0" start_off="303" end_par="1" end_off="305">
 <TYPE>Prep</TYPE>
 <CORRECTION>for</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="347" end_par="1" end_off="350">
+<MISTAKE start_par="0" start_off="347" end_par="1" end_off="350">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="358" end_par="1" end_off="365">
+<MISTAKE start_par="0" start_off="358" end_par="1" end_off="365">
 <TYPE>Mec</TYPE>
 <CORRECTION>society,</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="401" end_par="1" end_off="405">
+<MISTAKE start_par="0" start_off="401" end_par="1" end_off="405">
 <TYPE>Nn</TYPE>
 <CORRECTION>minds</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="415" end_par="1" end_off="418">
+<MISTAKE start_par="0" start_off="415" end_par="1" end_off="418">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="536" end_par="1" end_off="538">
+<MISTAKE start_par="0" start_off="536" end_par="1" end_off="538">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>of the</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="539" end_par="1" end_off="547">
+<MISTAKE start_par="0" start_off="539" end_par="1" end_off="547">
 <TYPE>Wform</TYPE>
 <CORRECTION>existance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="548" end_par="1" end_off="552">
+<MISTAKE start_par="0" start_off="548" end_par="1" end_off="552">
 <TYPE>Prep</TYPE>
 <CORRECTION>of some</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="589" end_par="1" end_off="591">
+<MISTAKE start_par="0" start_off="589" end_par="1" end_off="591">
 <TYPE>Prep</TYPE>
 <CORRECTION>between</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="592" end_par="1" end_off="595">
+<MISTAKE start_par="0" start_off="592" end_par="1" end_off="595">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="607" end_par="1" end_off="610">
+<MISTAKE start_par="0" start_off="607" end_par="1" end_off="610">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="9" end_par="2" end_off="19">
+<MISTAKE start_par="1" start_off="9" end_par="2" end_off="19">
 <TYPE>Wform</TYPE>
 <CORRECTION>installation</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="23" end_par="2" end_off="26">
+<MISTAKE start_par="1" start_off="23" end_par="2" end_off="26">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="27" end_par="2" end_off="40">
+<MISTAKE start_par="1" start_off="27" end_par="2" end_off="40">
 <TYPE>Nn</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="41" end_par="2" end_off="44">
+<MISTAKE start_par="1" start_off="41" end_par="2" end_off="44">
 <TYPE>Prep</TYPE>
 <CORRECTION>in</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="90" end_par="2" end_off="91">
+<MISTAKE start_par="1" start_off="90" end_par="2" end_off="91">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="266" end_par="2" end_off="278">
+<MISTAKE start_par="1" start_off="266" end_par="2" end_off="278">
 <TYPE>Srun</TYPE>
 <CORRECTION>reasons. One</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="338" end_par="2" end_off="351">
+<MISTAKE start_par="1" start_off="338" end_par="2" end_off="351">
 <TYPE>Nn</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="432" end_par="2" end_off="435">
+<MISTAKE start_par="1" start_off="432" end_par="2" end_off="435">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="574" end_par="2" end_off="587">
+<MISTAKE start_par="1" start_off="574" end_par="2" end_off="587">
 <TYPE>Nn</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="646" end_par="2" end_off="651">
+<MISTAKE start_par="1" start_off="646" end_par="2" end_off="651">
 <TYPE>Others</TYPE>
 <CORRECTION>media coverage</CORRECTION>
 <COMMENT>missing word</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="656" end_par="2" end_off="664">
+<MISTAKE start_par="1" start_off="656" end_par="2" end_off="664">
 <TYPE>Prep</TYPE>
 <CORRECTION>reported on</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="706" end_par="2" end_off="719">
+<MISTAKE start_par="1" start_off="706" end_par="2" end_off="719">
 <TYPE>Nn</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="746" end_par="2" end_off="751">
+<MISTAKE start_par="1" start_off="746" end_par="2" end_off="751">
 <TYPE>Wform</TYPE>
 <CORRECTION>use</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="755" end_par="2" end_off="758">
+<MISTAKE start_par="1" start_off="755" end_par="2" end_off="758">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="872" end_par="2" end_off="877">
+<MISTAKE start_par="1" start_off="872" end_par="2" end_off="877">
 <TYPE>Others</TYPE>
 <CORRECTION>times more</CORRECTION>
 <COMMENT>missing word</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="962" end_par="2" end_off="970">
+<MISTAKE start_par="1" start_off="962" end_par="2" end_off="970">
 <TYPE>Wform</TYPE>
 <CORRECTION>fight</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="971" end_par="2" end_off="973">
+<MISTAKE start_par="1" start_off="971" end_par="2" end_off="973">
 <TYPE>Prep</TYPE>
 <CORRECTION>against</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="994" end_par="2" end_off="1001">
+<MISTAKE start_par="1" start_off="994" end_par="2" end_off="1001">
 <TYPE>Wform</TYPE>
 <CORRECTION>successful</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="1013" end_par="2" end_off="1016">
+<MISTAKE start_par="1" start_off="1013" end_par="2" end_off="1016">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="15" end_par="3" end_off="18">
+<MISTAKE start_par="2" start_off="15" end_par="3" end_off="18">
 <TYPE>Rloc-</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="30" end_par="3" end_off="32">
+<MISTAKE start_par="2" start_off="30" end_par="3" end_off="32">
 <TYPE>Prep</TYPE>
 <CORRECTION>On</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="37" end_par="3" end_off="41">
+<MISTAKE start_par="2" start_off="37" end_par="3" end_off="41">
 <TYPE>Wci</TYPE>
 <CORRECTION>hand,</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="37" end_par="3" end_off="41">
+<MISTAKE start_par="2" start_off="37" end_par="3" end_off="41">
 <TYPE>Mec</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="41" end_par="3" end_off="44">
+<MISTAKE start_par="2" start_off="41" end_par="3" end_off="44">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="58" end_par="3" end_off="62">
+<MISTAKE start_par="2" start_off="58" end_par="3" end_off="62">
 <TYPE>SVA</TYPE>
 <CORRECTION>helps</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="104" end_par="3" end_off="109">
+<MISTAKE start_par="2" start_off="104" end_par="3" end_off="109">
 <TYPE>Srun</TYPE>
 <CORRECTION>life.</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="110" end_par="3" end_off="112">
+<MISTAKE start_par="2" start_off="110" end_par="3" end_off="112">
 <TYPE>Prep</TYPE>
 <CORRECTION>On</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="110" end_par="3" end_off="112">
+<MISTAKE start_par="2" start_off="110" end_par="3" end_off="112">
 <TYPE>Mec</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="123" end_par="3" end_off="126">
+<MISTAKE start_par="2" start_off="123" end_par="3" end_off="126">
 <TYPE>Wci</TYPE>
 <CORRECTION>hand,</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="123" end_par="3" end_off="126">
+<MISTAKE start_par="2" start_off="123" end_par="3" end_off="126">
 <TYPE>Mec</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="176" end_par="3" end_off="181">
+<MISTAKE start_par="2" start_off="176" end_par="3" end_off="181">
 <TYPE>Trans</TYPE>
 <CORRECTION>because of</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="253" end_par="3" end_off="259">
+<MISTAKE start_par="2" start_off="253" end_par="3" end_off="259">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>the author</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="314" end_par="3" end_off="317">
+<MISTAKE start_par="2" start_off="314" end_par="3" end_off="317">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="318" end_par="3" end_off="329">
+<MISTAKE start_par="2" start_off="318" end_par="3" end_off="329">
 <TYPE>Mec</TYPE>
 <CORRECTION>Big Brother</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="346" end_par="3" end_off="356">
+<MISTAKE start_par="2" start_off="346" end_par="3" end_off="356">
 <TYPE>Wform</TYPE>
 <CORRECTION>anything</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="364" end_par="3" end_off="369">
+<MISTAKE start_par="2" start_off="364" end_par="3" end_off="369">
 <TYPE>Nn</TYPE>
 <CORRECTION>word</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="433" end_par="3" end_off="443">
+<MISTAKE start_par="2" start_off="433" end_par="3" end_off="443">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>the government</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="444" end_par="3" end_off="448">
+<MISTAKE start_par="2" start_off="444" end_par="3" end_off="448">
 <TYPE>SVA</TYPE>
 <CORRECTION>knows</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="480" end_par="3" end_off="484">
+<MISTAKE start_par="2" start_off="480" end_par="3" end_off="484">
 <TYPE>SVA</TYPE>
 <CORRECTION>wants</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="611" end_par="3" end_off="614">
+<MISTAKE start_par="2" start_off="611" end_par="3" end_off="614">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="687" end_par="3" end_off="694">
+<MISTAKE start_par="2" start_off="687" end_par="3" end_off="694">
 <TYPE>Vt</TYPE>
 <CORRECTION>intentions</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="695" end_par="3" end_off="697">
+<MISTAKE start_par="2" start_off="695" end_par="3" end_off="697">
 <TYPE>Others</TYPE>
 <CORRECTION>to commit</CORRECTION>
 <COMMENT>missing word</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="698" end_par="3" end_off="703">
+<MISTAKE start_par="2" start_off="698" end_par="3" end_off="703">
 <TYPE>Nn</TYPE>
 <CORRECTION>crimes</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="743" end_par="3" end_off="745">
+<MISTAKE start_par="2" start_off="743" end_par="3" end_off="745">
 <TYPE>Ssub</TYPE>
 <CORRECTION>that is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="785" end_par="3" end_off="792">
+<MISTAKE start_par="2" start_off="785" end_par="3" end_off="792">
 <TYPE>Wci</TYPE>
 <CORRECTION>saying</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="823" end_par="3" end_off="827">
+<MISTAKE start_par="2" start_off="823" end_par="3" end_off="827">
 <TYPE>Wci</TYPE>
 <CORRECTION>neither</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="831" end_par="3" end_off="834">
+<MISTAKE start_par="2" start_off="831" end_par="3" end_off="834">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="835" end_par="3" end_off="842">
+<MISTAKE start_par="2" start_off="835" end_par="3" end_off="842">
 <TYPE>Wci</TYPE>
 <CORRECTION>them</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="842" end_par="3" end_off="846">
+<MISTAKE start_par="2" start_off="842" end_par="3" end_off="846">
 <TYPE>SVA</TYPE>
 <CORRECTION>wants</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="897" end_par="3" end_off="964">
+<MISTAKE start_par="2" start_off="897" end_par="3" end_off="964">
 <TYPE>WOinc</TYPE>
 <CORRECTION>The government needs to seriously consider normal people's privacy.</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="927" end_par="3" end_off="937">
+<MISTAKE start_par="2" start_off="927" end_par="3" end_off="937">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="959" end_par="3" end_off="964">
+<MISTAKE start_par="2" start_off="959" end_par="3" end_off="964">
 <TYPE>Prep</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="7" end_par="4" end_off="12">
+<MISTAKE start_par="3" start_off="7" end_par="4" end_off="12">
 <TYPE>SVA</TYPE>
 <CORRECTION>need</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="53" end_par="4" end_off="58">
+<MISTAKE start_par="3" start_off="53" end_par="4" end_off="58">
 <TYPE>SVA</TYPE>
 <CORRECTION>need</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="102" end_par="4" end_off="118">
+<MISTAKE start_par="3" start_off="102" end_par="4" end_off="118">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>Surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="146" end_par="4" end_off="155">
+<MISTAKE start_par="3" start_off="146" end_par="4" end_off="155">
 <TYPE>Npos</TYPE>
 <CORRECTION>society</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="171" end_par="4" end_off="176">
+<MISTAKE start_par="3" start_off="171" end_par="4" end_off="176">
 <TYPE>Wci</TYPE>
 <CORRECTION>affects</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="327" end_par="4" end_off="330">
+<MISTAKE start_par="3" start_off="327" end_par="4" end_off="330">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="347" end_par="4" end_off="349">
+<MISTAKE start_par="3" start_off="347" end_par="4" end_off="349">
 <TYPE>Wci</TYPE>
 <CORRECTION>not</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="350" end_par="4" end_off="361">
+<MISTAKE start_par="3" start_off="350" end_par="4" end_off="361">
 <TYPE>WOinc</TYPE>
 <CORRECTION>needed anymore</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="438" end_par="4" end_off="441">
+<MISTAKE start_par="3" start_off="438" end_par="4" end_off="441">
 <TYPE>SVA</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="442" end_par="4" end_off="455">
+<MISTAKE start_par="3" start_off="442" end_par="4" end_off="455">
 <TYPE>Nn</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="490" end_par="4" end_off="493">
+<MISTAKE start_par="3" start_off="490" end_par="4" end_off="493">
 <TYPE>Wci</TYPE>
 <CORRECTION>have</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="499" end_par="4" end_off="508">
+<MISTAKE start_par="3" start_off="499" end_par="4" end_off="508">
 <TYPE>Wform</TYPE>
 <CORRECTION>difficulty</CORRECTION>
 </MISTAKE>
@@ -4710,306 +4706,306 @@ In solution, surveillance technology has been used in a much broader area. Some 
 </P>
 </TEXT>
 <ANNOTATION teacher_id="6">
-<MISTAKE start_par="1" start_off="160" end_par="1" end_off="164">
+<MISTAKE start_par="0" start_off="160" end_par="1" end_off="164">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>with a</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="264" end_par="1" end_off="272">
+<MISTAKE start_par="0" start_off="264" end_par="1" end_off="272">
 <TYPE>Spar</TYPE>
 <CORRECTION>track the person or product</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="264" end_par="1" end_off="272">
+<MISTAKE start_par="0" start_off="264" end_par="1" end_off="272">
 <TYPE>Others</TYPE>
 <CORRECTION></CORRECTION>
 <COMMENT>missing nouns</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="167" end_par="2" end_off="184">
+<MISTAKE start_par="1" start_off="167" end_par="2" end_off="184">
 <TYPE>Um</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="299" end_par="2" end_off="304">
+<MISTAKE start_par="1" start_off="299" end_par="2" end_off="304">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>the human</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="321" end_par="2" end_off="328">
+<MISTAKE start_par="1" start_off="321" end_par="2" end_off="328">
 <TYPE>Wci</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="405" end_par="2" end_off="414">
+<MISTAKE start_par="1" start_off="405" end_par="2" end_off="414">
 <TYPE>Vform</TYPE>
 <CORRECTION>being released</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="415" end_par="2" end_off="422">
+<MISTAKE start_par="1" start_off="415" end_par="2" end_off="422">
 <TYPE>Npos</TYPE>
 <CORRECTION>without the owner's</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="415" end_par="2" end_off="422">
+<MISTAKE start_par="1" start_off="415" end_par="2" end_off="422">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="423" end_par="2" end_off="430">
+<MISTAKE start_par="1" start_off="423" end_par="2" end_off="430">
 <TYPE>Wform</TYPE>
 <CORRECTION>knowledge</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="436" end_par="2" end_off="442">
+<MISTAKE start_par="1" start_off="436" end_par="2" end_off="442">
 <TYPE>Wci</TYPE>
 <CORRECTION>causes</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="443" end_par="2" end_off="446">
+<MISTAKE start_par="1" start_off="443" end_par="2" end_off="446">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="447" end_par="2" end_off="455">
+<MISTAKE start_par="1" start_off="447" end_par="2" end_off="455">
 <TYPE>Npos</TYPE>
 <CORRECTION>public</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="16" end_par="3" end_off="28">
+<MISTAKE start_par="2" start_off="16" end_par="3" end_off="28">
 <TYPE>Mec</TYPE>
 <CORRECTION>surveillance</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="40" end_par="3" end_off="43">
+<MISTAKE start_par="2" start_off="40" end_par="3" end_off="43">
 <TYPE>Rloc-</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="44" end_par="3" end_off="48">
+<MISTAKE start_par="2" start_off="44" end_par="3" end_off="48">
 <TYPE>SVA</TYPE>
 <CORRECTION>has</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="178" end_par="3" end_off="181">
+<MISTAKE start_par="2" start_off="178" end_par="3" end_off="181">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="228" end_par="3" end_off="237">
+<MISTAKE start_par="2" start_off="228" end_par="3" end_off="237">
 <TYPE>Rloc-</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="281" end_par="3" end_off="283">
+<MISTAKE start_par="2" start_off="281" end_par="3" end_off="283">
 <TYPE>V0</TYPE>
 <CORRECTION>need to</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="378" end_par="3" end_off="381">
+<MISTAKE start_par="2" start_off="378" end_par="3" end_off="381">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="397" end_par="3" end_off="404">
+<MISTAKE start_par="2" start_off="397" end_par="3" end_off="404">
 <TYPE>Vt</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="449" end_par="3" end_off="452">
+<MISTAKE start_par="2" start_off="449" end_par="3" end_off="452">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="471" end_par="3" end_off="474">
+<MISTAKE start_par="2" start_off="471" end_par="3" end_off="474">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="484" end_par="3" end_off="487">
+<MISTAKE start_par="2" start_off="484" end_par="3" end_off="487">
 <TYPE>Vform</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="488" end_par="3" end_off="496">
+<MISTAKE start_par="2" start_off="488" end_par="3" end_off="496">
 <TYPE>Wci</TYPE>
 <CORRECTION>have</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="497" end_par="3" end_off="500">
+<MISTAKE start_par="2" start_off="497" end_par="3" end_off="500">
 <TYPE>Prep</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="500" end_par="3" end_off="503">
+<MISTAKE start_par="2" start_off="500" end_par="3" end_off="503">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="660" end_par="3" end_off="664">
+<MISTAKE start_par="2" start_off="660" end_par="3" end_off="664">
 <TYPE>Wform</TYPE>
 <CORRECTION>loss</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="696" end_par="3" end_off="699">
+<MISTAKE start_par="2" start_off="696" end_par="3" end_off="699">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="748" end_par="3" end_off="752">
+<MISTAKE start_par="2" start_off="748" end_par="3" end_off="752">
 <TYPE>Nn</TYPE>
 <CORRECTION>kinds</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="819" end_par="3" end_off="822">
+<MISTAKE start_par="2" start_off="819" end_par="3" end_off="822">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="823" end_par="3" end_off="836">
+<MISTAKE start_par="2" start_off="823" end_par="3" end_off="836">
 <TYPE>Mec</TYPE>
 <CORRECTION>Supermarkets</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="881" end_par="3" end_off="888">
+<MISTAKE start_par="2" start_off="881" end_par="3" end_off="888">
 <TYPE>Nn</TYPE>
 <CORRECTION>products</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="965" end_par="3" end_off="967">
+<MISTAKE start_par="2" start_off="965" end_par="3" end_off="967">
 <TYPE>Prep</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="1121" end_par="3" end_off="1127">
+<MISTAKE start_par="2" start_off="1121" end_par="3" end_off="1127">
 <TYPE>Nn</TYPE>
 <CORRECTION>profits</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="1135" end_par="3" end_off="1141">
+<MISTAKE start_par="2" start_off="1135" end_par="3" end_off="1141">
 <TYPE>Wci</TYPE>
 <CORRECTION>supermarket</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="0" end_par="4" end_off="13">
+<MISTAKE start_par="3" start_off="0" end_par="4" end_off="13">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>Libraries</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="4" end_par="4" end_off="13">
+<MISTAKE start_par="3" start_off="4" end_par="4" end_off="13">
 <TYPE>Mec</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="69" end_par="4" end_off="72">
+<MISTAKE start_par="3" start_off="69" end_par="4" end_off="72">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="149" end_par="4" end_off="180">
+<MISTAKE start_par="3" start_off="149" end_par="4" end_off="180">
 <TYPE>Um</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="323" end_par="4" end_off="326">
+<MISTAKE start_par="3" start_off="323" end_par="4" end_off="326">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="343" end_par="4" end_off="346">
+<MISTAKE start_par="3" start_off="343" end_par="4" end_off="346">
 <TYPE>Mec</TYPE>
 <CORRECTION>tag</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="414" end_par="4" end_off="435">
+<MISTAKE start_par="3" start_off="414" end_par="4" end_off="435">
 <TYPE>Trans</TYPE>
 <CORRECTION>Because</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="516" end_par="4" end_off="525">
+<MISTAKE start_par="3" start_off="516" end_par="4" end_off="525">
 <TYPE>Wci</TYPE>
 <CORRECTION>awareness</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="561" end_par="4" end_off="565">
+<MISTAKE start_par="3" start_off="561" end_par="4" end_off="565">
 <TYPE>V0</TYPE>
 <CORRECTION>becoming lost</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="39" end_par="5" end_off="44">
+<MISTAKE start_par="4" start_off="39" end_par="5" end_off="44">
 <TYPE>Wci</TYPE>
 <CORRECTION>capture</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="79" end_par="5" end_off="84">
+<MISTAKE start_par="4" start_off="79" end_par="5" end_off="84">
 <TYPE>Others</TYPE>
 <CORRECTION>track it</CORRECTION>
 <COMMENT>missing object</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="129" end_par="5" end_off="131">
+<MISTAKE start_par="4" start_off="129" end_par="5" end_off="131">
 <TYPE>Prep</TYPE>
 <CORRECTION>With</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="158" end_par="5" end_off="167">
+<MISTAKE start_par="4" start_off="158" end_par="5" end_off="167">
 <TYPE>Wci</TYPE>
 <CORRECTION>considering</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="168" end_par="5" end_off="174">
+<MISTAKE start_par="4" start_off="168" end_par="5" end_off="174">
 <TYPE>Wform</TYPE>
 <CORRECTION>buying</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="192" end_par="5" end_off="198">
+<MISTAKE start_par="4" start_off="192" end_par="5" end_off="198">
 <TYPE>Others</TYPE>
 <CORRECTION>luxury item</CORRECTION>
 <COMMENT>missing noun</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="234" end_par="5" end_off="249">
+<MISTAKE start_par="4" start_off="234" end_par="5" end_off="249">
 <TYPE>Wci</TYPE>
 <CORRECTION>the possibility of losing it</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="259" end_par="5" end_off="262">
+<MISTAKE start_par="4" start_off="259" end_par="5" end_off="262">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="327" end_par="5" end_off="331">
+<MISTAKE start_par="4" start_off="327" end_par="5" end_off="331">
 <TYPE>Nn</TYPE>
 <CORRECTION>sales</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="451" end_par="5" end_off="455">
+<MISTAKE start_par="4" start_off="451" end_par="5" end_off="455">
 <TYPE>Nn</TYPE>
 <CORRECTION>areas</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="35" end_par="6" end_off="38">
+<MISTAKE start_par="5" start_off="35" end_par="6" end_off="38">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="262" end_par="6" end_off="264">
+<MISTAKE start_par="5" start_off="262" end_par="6" end_off="264">
 <TYPE>Prep</TYPE>
 <CORRECTION>of</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="650" end_par="6" end_off="655">
+<MISTAKE start_par="5" start_off="650" end_par="6" end_off="655">
 <TYPE>Wci</TYPE>
 <CORRECTION>piece of</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="752" end_par="6" end_off="774">
+<MISTAKE start_par="5" start_off="752" end_par="6" end_off="774">
 <TYPE>WOinc</TYPE>
 <CORRECTION>is the privacy problem</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="775" end_par="6" end_off="784">
+<MISTAKE start_par="5" start_off="775" end_par="6" end_off="784">
 <TYPE>Wform</TYPE>
 <CORRECTION>a concern</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="775" end_par="6" end_off="784">
+<MISTAKE start_par="5" start_off="775" end_par="6" end_off="784">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="786" end_par="6" end_off="789">
+<MISTAKE start_par="5" start_off="786" end_par="6" end_off="789">
 <TYPE>Trans</TYPE>
 <CORRECTION>but also</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="790" end_par="6" end_off="793">
+<MISTAKE start_par="5" start_off="790" end_par="6" end_off="793">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="808" end_par="6" end_off="812">
+<MISTAKE start_par="5" start_off="808" end_par="6" end_off="812">
 <TYPE>Wci</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="817" end_par="6" end_off="827">
+<MISTAKE start_par="5" start_off="817" end_par="6" end_off="827">
 <TYPE>Wform</TYPE>
 <CORRECTION>implanted</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="3" end_par="7" end_off="11">
+<MISTAKE start_par="6" start_off="3" end_par="7" end_off="11">
 <TYPE>Wci</TYPE>
 <CORRECTION>conclusion</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="210" end_par="7" end_off="212">
+<MISTAKE start_par="6" start_off="210" end_par="7" end_off="212">
 <TYPE>Vform</TYPE>
 <CORRECTION>being</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="231" end_par="7" end_off="233">
+<MISTAKE start_par="6" start_off="231" end_par="7" end_off="233">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>be a</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="234" end_par="7" end_off="243">
+<MISTAKE start_par="6" start_off="234" end_par="7" end_off="243">
 <TYPE>Wform</TYPE>
 <CORRECTION>concern</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="312" end_par="7" end_off="315">
+<MISTAKE start_par="6" start_off="312" end_par="7" end_off="315">
 <TYPE>SVA</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="348" end_par="7" end_off="357">
+<MISTAKE start_par="6" start_off="348" end_par="7" end_off="357">
 <TYPE>Mec</TYPE>
 <CORRECTION>improved?</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="369" end_par="7" end_off="371">
+<MISTAKE start_par="6" start_off="369" end_par="7" end_off="371">
 <TYPE>Wci</TYPE>
 <CORRECTION>is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="372" end_par="7" end_off="376">
+<MISTAKE start_par="6" start_off="372" end_par="7" end_off="376">
 <TYPE>V0</TYPE>
 <CORRECTION>being</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="377" end_par="7" end_off="380">
+<MISTAKE start_par="6" start_off="377" end_par="7" end_off="380">
 <TYPE>Vform</TYPE>
 <CORRECTION>used</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="478" end_par="7" end_off="487">
+<MISTAKE start_par="6" start_off="478" end_par="7" end_off="487">
 <TYPE>Wform</TYPE>
 <CORRECTION>maximum</CORRECTION>
 </MISTAKE>
@@ -7333,133 +7329,133 @@ However developed our society is , Technology should always serve us as a tool i
 </P>
 </TEXT>
 <ANNOTATION teacher_id="6">
-<MISTAKE start_par="1" start_off="104" end_par="1" end_off="109">
+<MISTAKE start_par="0" start_off="104" end_par="1" end_off="109">
 <TYPE>Mec</TYPE>
 <CORRECTION>lives</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="123" end_par="1" end_off="132">
+<MISTAKE start_par="0" start_off="123" end_par="1" end_off="132">
 <TYPE>Wform</TYPE>
 <CORRECTION>everybody's</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="1" start_off="245" end_par="1" end_off="249">
+<MISTAKE start_par="0" start_off="245" end_par="1" end_off="249">
 <TYPE>Trans</TYPE>
 <CORRECTION>While</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="44" end_par="2" end_off="50">
+<MISTAKE start_par="1" start_off="44" end_par="2" end_off="50">
 <TYPE>Vt</TYPE>
 <CORRECTION>has raised</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="99" end_par="2" end_off="104">
+<MISTAKE start_par="1" start_off="99" end_par="2" end_off="104">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>a doubt</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="130" end_par="2" end_off="146">
+<MISTAKE start_par="1" start_off="130" end_par="2" end_off="146">
 <TYPE>Wci</TYPE>
 <CORRECTION>violates</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="172" end_par="2" end_off="175">
+<MISTAKE start_par="1" start_off="172" end_par="2" end_off="175">
 <TYPE>Prep</TYPE>
 <CORRECTION></CORRECTION>
 <COMMENT>
 </COMMENT>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="338" end_par="2" end_off="346">
+<MISTAKE start_par="1" start_off="338" end_par="2" end_off="346">
 <TYPE>Trans</TYPE>
 <CORRECTION>As</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="461" end_par="2" end_off="464">
+<MISTAKE start_par="1" start_off="461" end_par="2" end_off="464">
 <TYPE>Vt</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="481" end_par="2" end_off="484">
+<MISTAKE start_par="1" start_off="481" end_par="2" end_off="484">
 <TYPE>Vt</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="634" end_par="2" end_off="640">
+<MISTAKE start_par="1" start_off="634" end_par="2" end_off="640">
 <TYPE>Npos</TYPE>
 <CORRECTION>others'</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="29" end_par="3" end_off="33">
+<MISTAKE start_par="2" start_off="29" end_par="3" end_off="33">
 <TYPE>Vt</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="46" end_par="3" end_off="48">
+<MISTAKE start_par="2" start_off="46" end_par="3" end_off="48">
 <TYPE>Vform</TYPE>
 <CORRECTION>do</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="53" end_par="3" end_off="60">
+<MISTAKE start_par="2" start_off="53" end_par="3" end_off="60">
 <TYPE>Vform</TYPE>
 <CORRECTION>belong</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="64" end_par="3" end_off="69">
+<MISTAKE start_par="2" start_off="64" end_par="3" end_off="69">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>the human</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="70" end_par="3" end_off="76">
+<MISTAKE start_par="2" start_off="70" end_par="3" end_off="76">
 <TYPE>Wci</TYPE>
 <CORRECTION>race</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="77" end_par="3" end_off="79">
+<MISTAKE start_par="2" start_off="77" end_par="3" end_off="79">
 <TYPE>Trans</TYPE>
 <CORRECTION>like</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="98" end_par="3" end_off="105">
+<MISTAKE start_par="2" start_off="98" end_par="3" end_off="105">
 <TYPE>Srun</TYPE>
 <CORRECTION>longer;</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="199" end_par="3" end_off="204">
+<MISTAKE start_par="2" start_off="199" end_par="3" end_off="204">
 <TYPE>Mec</TYPE>
 <CORRECTION>life</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="0" end_par="4" end_off="17">
+<MISTAKE start_par="3" start_off="0" end_par="4" end_off="17">
 <TYPE>Trans</TYPE>
 <CORRECTION>Moreover</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="57" end_par="4" end_off="62">
+<MISTAKE start_par="3" start_off="57" end_par="4" end_off="62">
 <TYPE>Vform</TYPE>
 <CORRECTION>to be</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="102" end_par="4" end_off="112">
+<MISTAKE start_par="3" start_off="102" end_par="4" end_off="112">
 <TYPE>Wform</TYPE>
 <CORRECTION>success</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="128" end_par="4" end_off="146">
+<MISTAKE start_par="3" start_off="128" end_par="4" end_off="146">
 <TYPE>Wci</TYPE>
 <CORRECTION>committing crimes</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="30" end_par="5" end_off="34">
+<MISTAKE start_par="4" start_off="30" end_par="5" end_off="34">
 <TYPE>Mec</TYPE>
 <CORRECTION>is,</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="35" end_par="5" end_off="45">
+<MISTAKE start_par="4" start_off="35" end_par="5" end_off="45">
 <TYPE>Mec</TYPE>
 <CORRECTION>technology</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="118" end_par="5" end_off="123">
+<MISTAKE start_par="4" start_off="118" end_par="5" end_off="123">
 <TYPE>Wci</TYPE>
 <CORRECTION>All</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="269" end_par="5" end_off="274">
+<MISTAKE start_par="4" start_off="269" end_par="5" end_off="274">
 <TYPE>Vm</TYPE>
 <CORRECTION>will taste</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="306" end_par="5" end_off="308">
+<MISTAKE start_par="4" start_off="306" end_par="5" end_off="308">
 <TYPE>Prep</TYPE>
 <CORRECTION>for</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="322" end_par="5" end_off="332">
+<MISTAKE start_par="4" start_off="322" end_par="5" end_off="332">
 <TYPE>Mec</TYPE>
 <CORRECTION>technology,</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="363" end_par="5" end_off="369">
+<MISTAKE start_par="4" start_off="363" end_par="5" end_off="369">
 <TYPE>Rloc-</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="409" end_par="5" end_off="418">
+<MISTAKE start_par="4" start_off="409" end_par="5" end_off="418">
 <TYPE>Spar</TYPE>
 <CORRECTION>violates</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="441" end_par="5" end_off="469">
+<MISTAKE start_par="4" start_off="441" end_par="5" end_off="469">
 <TYPE>Smod</TYPE>
 <CORRECTION>it should not be used</CORRECTION>
 </MISTAKE>
@@ -12459,241 +12455,241 @@ To conclude, the population ageing phenomenon indeed shows our big achievement o
 </P>
 </TEXT>
 <ANNOTATION teacher_id="6">
-<MISTAKE start_par="2" start_off="0" end_par="2" end_off="3">
+<MISTAKE start_par="1" start_off="0" end_par="2" end_off="3">
 <TYPE>Prep</TYPE>
 <CORRECTION>Due to</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="8" end_par="2" end_off="12">
+<MISTAKE start_par="1" start_off="8" end_par="2" end_off="12">
 <TYPE>Wci</TYPE>
 <CORRECTION>increase</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="16" end_par="2" end_off="19">
+<MISTAKE start_par="1" start_off="16" end_par="2" end_off="19">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="38" end_par="2" end_off="44">
+<MISTAKE start_par="1" start_off="38" end_par="2" end_off="44">
 <TYPE>Wform</TYPE>
 <CORRECTION>shrinking</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="48" end_par="2" end_off="51">
+<MISTAKE start_par="1" start_off="48" end_par="2" end_off="51">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="68" end_par="2" end_off="75">
+<MISTAKE start_par="1" start_off="68" end_par="2" end_off="75">
 <TYPE>Wci</TYPE>
 <CORRECTION>number</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="79" end_par="2" end_off="82">
+<MISTAKE start_par="1" start_off="79" end_par="2" end_off="82">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="91" end_par="2" end_off="98">
+<MISTAKE start_par="1" start_off="91" end_par="2" end_off="98">
 <TYPE>Rloc-</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="99" end_par="2" end_off="101">
+<MISTAKE start_par="1" start_off="99" end_par="2" end_off="101">
 <TYPE>Vt</TYPE>
 <CORRECTION>is becoming</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="146" end_par="2" end_off="149">
+<MISTAKE start_par="1" start_off="146" end_par="2" end_off="149">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="251" end_par="2" end_off="253">
+<MISTAKE start_par="1" start_off="251" end_par="2" end_off="253">
 <TYPE>Prep</TYPE>
 <CORRECTION>with</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="289" end_par="2" end_off="292">
+<MISTAKE start_par="1" start_off="289" end_par="2" end_off="292">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="309" end_par="2" end_off="317">
+<MISTAKE start_par="1" start_off="309" end_par="2" end_off="317">
 <TYPE>Vt</TYPE>
 <CORRECTION>has also had</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="318" end_par="2" end_off="319">
+<MISTAKE start_par="1" start_off="318" end_par="2" end_off="319">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="361" end_par="2" end_off="364">
+<MISTAKE start_par="1" start_off="361" end_par="2" end_off="364">
 <TYPE>Vt</TYPE>
 <CORRECTION>were</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="531" end_par="2" end_off="535">
+<MISTAKE start_par="1" start_off="531" end_par="2" end_off="535">
 <TYPE>Wform</TYPE>
 <CORRECTION>dead</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="611" end_par="2" end_off="623">
+<MISTAKE start_par="1" start_off="611" end_par="2" end_off="623">
 <TYPE>Srun</TYPE>
 <CORRECTION>decreasing;</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="623" end_par="2" end_off="628">
+<MISTAKE start_par="1" start_off="623" end_par="2" end_off="628">
 <TYPE>Wci</TYPE>
 <CORRECTION>each</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="657" end_par="2" end_off="666">
+<MISTAKE start_par="1" start_off="657" end_par="2" end_off="666">
 <TYPE>Wform</TYPE>
 <CORRECTION>compared</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="670" end_par="2" end_off="678">
+<MISTAKE start_par="1" start_off="670" end_par="2" end_off="678">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>the previous</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="708" end_par="2" end_off="711">
+<MISTAKE start_par="1" start_off="708" end_par="2" end_off="711">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="727" end_par="2" end_off="729">
+<MISTAKE start_par="1" start_off="727" end_par="2" end_off="729">
 <TYPE>Vt</TYPE>
 <CORRECTION>has</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="751" end_par="2" end_off="763">
+<MISTAKE start_par="1" start_off="751" end_par="2" end_off="763">
 <TYPE>Srun</TYPE>
 <CORRECTION>competitive;</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="764" end_par="2" end_off="767">
+<MISTAKE start_par="1" start_off="764" end_par="2" end_off="767">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="826" end_par="2" end_off="832">
+<MISTAKE start_par="1" start_off="826" end_par="2" end_off="832">
 <TYPE>Nn</TYPE>
 <CORRECTION>careers</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="924" end_par="2" end_off="930">
+<MISTAKE start_par="1" start_off="924" end_par="2" end_off="930">
 <TYPE>Wtone</TYPE>
 <CORRECTION>that is</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="950" end_par="2" end_off="958">
+<MISTAKE start_par="1" start_off="950" end_par="2" end_off="958">
 <TYPE>Wci</TYPE>
 <CORRECTION>decrease</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="2" start_off="959" end_par="2" end_off="961">
+<MISTAKE start_par="1" start_off="959" end_par="2" end_off="961">
 <TYPE>Prep</TYPE>
 <CORRECTION>in</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="21" end_par="3" end_off="166">
+<MISTAKE start_par="2" start_off="21" end_par="3" end_off="166">
 <TYPE>Cit</TYPE>
 <CORRECTION></CORRECTION>
 <COMMENT>lifted from prompt</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="167" end_par="3" end_off="171">
+<MISTAKE start_par="2" start_off="167" end_par="3" end_off="171">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>A</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="283" end_par="3" end_off="287">
+<MISTAKE start_par="2" start_off="283" end_par="3" end_off="287">
 <TYPE>Vform</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="3" start_off="337" end_par="3" end_off="341">
+<MISTAKE start_par="2" start_off="337" end_par="3" end_off="341">
 <TYPE>Vform</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="48" end_par="4" end_off="50">
+<MISTAKE start_par="3" start_off="48" end_par="4" end_off="50">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>be a</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="51" end_par="4" end_off="57">
+<MISTAKE start_par="3" start_off="51" end_par="4" end_off="57">
 <TYPE>Wci</TYPE>
 <CORRECTION>smaller</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="57" end_par="4" end_off="67">
+<MISTAKE start_par="3" start_off="57" end_par="4" end_off="67">
 <TYPE>Nn</TYPE>
 <CORRECTION>workforce</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="85" end_par="4" end_off="88">
+<MISTAKE start_par="3" start_off="85" end_par="4" end_off="88">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="107" end_par="4" end_off="113">
+<MISTAKE start_par="3" start_off="107" end_par="4" end_off="113">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION>an ageing</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="228" end_par="4" end_off="235">
+<MISTAKE start_par="3" start_off="228" end_par="4" end_off="235">
 <TYPE>Nn</TYPE>
 <CORRECTION>pensions</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="298" end_par="4" end_off="301">
+<MISTAKE start_par="3" start_off="298" end_par="4" end_off="301">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="302" end_par="4" end_off="309">
+<MISTAKE start_par="3" start_off="302" end_par="4" end_off="309">
 <TYPE>Others</TYPE>
 <CORRECTION>younger people</CORRECTION>
 <COMMENT>missing word</COMMENT>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="322" end_par="4" end_off="328">
+<MISTAKE start_par="3" start_off="322" end_par="4" end_off="328">
 <TYPE>Vm</TYPE>
 <CORRECTION>will</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="4" start_off="334" end_par="4" end_off="338">
+<MISTAKE start_par="3" start_off="334" end_par="4" end_off="338">
 <TYPE>Wci</TYPE>
 <CORRECTION>have</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="14" end_par="5" end_off="17">
+<MISTAKE start_par="4" start_off="14" end_par="5" end_off="17">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="69" end_par="5" end_off="75">
+<MISTAKE start_par="4" start_off="69" end_par="5" end_off="75">
 <TYPE>Vm</TYPE>
 <CORRECTION>will need to</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="130" end_par="5" end_off="137">
+<MISTAKE start_par="4" start_off="130" end_par="5" end_off="137">
 <TYPE>Mec</TYPE>
 <CORRECTION>reduces</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="138" end_par="5" end_off="141">
+<MISTAKE start_par="4" start_off="138" end_par="5" end_off="141">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="158" end_par="5" end_off="162">
+<MISTAKE start_par="4" start_off="158" end_par="5" end_off="162">
 <TYPE>Nn</TYPE>
 <CORRECTION>areas</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="242" end_par="5" end_off="247">
+<MISTAKE start_par="4" start_off="242" end_par="5" end_off="247">
 <TYPE>Wci</TYPE>
 <CORRECTION>place</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="255" end_par="5" end_off="260">
+<MISTAKE start_par="4" start_off="255" end_par="5" end_off="260">
 <TYPE>Wform</TYPE>
 <CORRECTION>taxes</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="5" start_off="264" end_par="5" end_off="267">
+<MISTAKE start_par="4" start_off="264" end_par="5" end_off="267">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="21" end_par="6" end_off="24">
+<MISTAKE start_par="5" start_off="21" end_par="6" end_off="24">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="75" end_par="6" end_off="82">
+<MISTAKE start_par="5" start_off="75" end_par="6" end_off="82">
 <TYPE>Wci</TYPE>
 <CORRECTION>necessary</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="6" start_off="217" end_par="6" end_off="228">
+<MISTAKE start_par="5" start_off="217" end_par="6" end_off="228">
 <TYPE>Um</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="79" end_par="7" end_off="81">
+<MISTAKE start_par="6" start_off="79" end_par="7" end_off="81">
 <TYPE>Prep</TYPE>
 <CORRECTION>in</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="82" end_par="7" end_off="89">
+<MISTAKE start_par="6" start_off="82" end_par="7" end_off="89">
 <TYPE>Wform</TYPE>
 <CORRECTION>economics</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="232" end_par="7" end_off="235">
+<MISTAKE start_par="6" start_off="232" end_par="7" end_off="235">
 <TYPE>Wtone</TYPE>
 <CORRECTION>very</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="252" end_par="7" end_off="255">
+<MISTAKE start_par="6" start_off="252" end_par="7" end_off="255">
 <TYPE>ArtOrDet</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="390" end_par="7" end_off="398">
+<MISTAKE start_par="6" start_off="390" end_par="7" end_off="398">
 <TYPE>Wci</TYPE>
 <CORRECTION>necessary</CORRECTION>
 </MISTAKE>
-<MISTAKE start_par="7" start_off="514" end_par="7" end_off="526">
+<MISTAKE start_par="6" start_off="514" end_par="7" end_off="526">
 <TYPE>Um</TYPE>
 <CORRECTION></CORRECTION>
 </MISTAKE>

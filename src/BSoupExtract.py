@@ -95,15 +95,14 @@ class BSoupExtract(object):
         #Generates fully corrected corpus
         corrections = self.extractMistakesAndCorrection(docId)
         origPar = self.extractParagraph(docId)
+       
         genSentences = deepcopy(origPar)
 
         finalCorr = {}
         for i, v in corrections.iteritems():
             #If the paragraphs has sentences that need to be corrected
-            if i in genSentences.keys():
                 sToBeCorr = deepcopy(genSentences[i]) 
                 for l in v:
-                                    
                     start = int(l.keys()[0][1])
                     end = int(l.keys()[0][2])
                     
@@ -115,8 +114,7 @@ class BSoupExtract(object):
                 finalCorr[i] = sToBeCorr
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
-            else:
-                pass
+           
         return finalCorr
     
     def preSave(self):
@@ -127,13 +125,16 @@ class BSoupExtract(object):
         #Pass doc Ids through paragraph correction
         print "Presave in progress"
         for i in DocIDs:
-            for k, v in self.extractParagraph(i).iteritems():
+            for k, v in self.extractParagraph(i).iteritems():    
                 UncorrectedEssays[k] = v 
-            for k, v in self.genCorrections(i, 'Wci'):
+            for k, v in self.genCorrections(i, 'Wci').iteritems():
                 CorrectedEssays[k] = v 
         #Sort Corrected essays by keys
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
+        #TO do:
+        #Make sure that you can add from uncorrected dictionary all keys that are not present in corrected dictionary
+        
         return UncorrectedEssays, CorrectedEssays
     
     def savetoFile(self, sent, newFilename, foldername):
