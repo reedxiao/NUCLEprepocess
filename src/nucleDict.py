@@ -88,7 +88,7 @@ class nucleDict(object):
                 print newFilename+" file saved"           
             except OSError as exc:
                 raise
-        else:
+            else:
                 path = os.path.join(foldername, newFilename)
                 with open(path, 'w') as f:
                     #Separate line for each sentence

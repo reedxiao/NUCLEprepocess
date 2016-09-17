@@ -4,15 +4,17 @@ Created on 11/09/2016
 Possible better way to parse .sgml format
 '''
 import re
-import os, os.path
+import os
 import collections
+import string
 
 from copy import deepcopy
 from nltk.tokenize import sent_tokenize
+import nltk
 
 class BSoupExtract(object):
     '''
-    Experiment with Beautiful Soup
+    Experiment with Beautiful Soup, which was shit, so had to write my own .sgml parser
     '''
     def __init__(self, filename, foldername):
         '''
@@ -140,40 +142,88 @@ class BSoupExtract(object):
         return UncorrectedEssays, CorrectedEssays
     
     #Save original and corrected sentences
-    def savetoFile(self, sent, newFilename, sorting):
+    def savetoFile(self, par, newFilename, sorting):
         '''Save list of sentences to text file'''
         foldername = "../"+self.foldername
-        print "seriously what the fuck"
-        print os.path.exists(foldername)
+        
         if not os.path.exists(foldername):
-            try:
-                os.makedirs(foldername)
+            os.makedirs(foldername)
                 #Add text files to the folder
-                path = os.path.join(foldername, newFilename)
-                with open(path, 'w') as f:
-                    #Separate line for each sentence
-                    for line in sorting:
-                        inline =  sent_tokenize(sent[line])
-                        for s in inline:
-                            s = s.replace('!', ' !')
-                            s = s.replace('.', ' .')
-                            s = s.replace(',', ' ,')
-                            s = s.replace('?', ' ?')
-                            #s = s.replace('\n', '')                                                         
-                            f.write(s.lstrip())
-                print newFilename+" file saved"           
-            except OSError as exc:
-                raise
-        else:
-            path = os.path.join(foldername, newFilename)
-            with open(path, 'w') as f:
-                #Separate line for each sentence
+        path = os.path.join(foldername, newFilename)
+        
+        with open(path, 'w') as f:
+            #Separate line for each sentence
+            if sorting == None:
+                for s in par:
+                    s = s.replace('!', ' !')
+                    s = s.replace('.', ' .')
+                    s = s.replace(',', ' ,')
+                    s = s.replace('?', ' ?')                                                        
+                    f.write(s.lstrip())    
+                print newFilename+"dict/eval file saved"  
+            else:
                 for line in sorting:
-                    inline =  sent_tokenize(sent[line])
+                    inline =  sent_tokenize(par[line])
                     for s in inline:
                         s = s.replace('!', ' !')
                         s = s.replace('.', ' .')
                         s = s.replace(',', ' ,')
-                        s = s.replace('?', ' ?')                                     
-                        f.write(s.lstrip()+"\n")  
-            print newFilename+" file saved" 
+                        s = s.replace('?', ' ?')
+                        #s = s.replace('\n', '')                                                         
+                        f.write(s.lstrip()+"\n")    
+        print newFilename+" file saved"    
+        
+    def evalGen(self, inputtxtfile, src_or_targ):
+        '''This takes in the input and splits it into the train, test and eval sets for training
+        '''
+        inputtxtfile = "../"+self.foldername+"/"+inputtxtfile
+        num_linesInput = sum(1 for line in open(inputtxtfile))
+        train = int(round(0.6*num_linesInput))
+        evalD =  int(round(0.3*num_linesInput))
+        
+        trainList = []
+        evalList = []
+        testList = []
+        count = 0
+        
+        with open(inputtxtfile) as fileobject:
+            for i in fileobject:
+                if(count <= train):
+                    trainList.append(i) 
+                elif(count > train and count <=train+evalD):
+                    evalList.append(i) 
+                elif(count > train+evalD):
+                    testList.append(i)
+                count = count +1       
+        #Generate training data and save to file
+        self.savetoFile(trainList, src_or_targ+"-train.txt", None)
+        #Generate test data and Save to file
+        self.savetoFile(evalList, src_or_targ+"-val.txt", None)
+        #Generate evaluation data and Save to file
+        self.savetoFile(testList, src_or_targ+"-test.txt", None)       
+    
+    @staticmethod
+    def collapseDict(genEntry):
+        outputList = []
+        for _, v in genEntry.iteritems():
+            outputList.append(v)
+        return outputList
+    
+    
+    def dictGen(self, TextList):
+        #This takes the generated corpus and turns it into a training dictionary
+        OutSym = ["<blank> 1", "<unk> 2", "<s> 3","</s> 4"]
+        setOf = set()
+        count = 5
+        exclude = set(string.punctuation)
+        for lex in TextList:
+            sentence = nltk.sent_tokenize(lex)
+            for words in sentence:
+                wordList = nltk.word_tokenize(words)
+                for entry in wordList:
+                    if entry not in exclude and entry not in setOf and entry.isdigit() == False:
+                        dictWord = entry+" "+str(count)
+                        setOf.add(entry)
+                        OutSym.append(dictWord)
+                        count = count+1
+        return OutSym
