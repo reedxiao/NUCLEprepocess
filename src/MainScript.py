@@ -13,7 +13,7 @@ import CorpusTest
 from nltk.tokenize import sent_tokenize
 
 fileName = "official.sgml"
-folderName = "NUCLE2013"
+folderName = "NUCLE2018"
 #text = nucleDict.nucleDict(fileName)
 #test = BSoupExtract.BSoupExtract(fileName).extract('41', "MISTAKE")
 

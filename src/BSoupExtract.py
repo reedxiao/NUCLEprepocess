@@ -4,7 +4,7 @@ Created on 11/09/2016
 Possible better way to parse .sgml format
 '''
 import re
-import os
+import os, os.path
 import collections
 
 from copy import deepcopy
@@ -14,13 +14,14 @@ class BSoupExtract(object):
     '''
     Experiment with Beautiful Soup
     '''
-    def __init__(self, filename):
+    def __init__(self, filename, foldername):
         '''
         Constructor: Takes in nucleDict Object
         extracts text between tags
         '''
         self.fileName= filename 
         self.extracted = self.extractSentences()
+        self.foldername = foldername
         
     def extractSentences(self):
         extract = {}
@@ -132,32 +133,47 @@ class BSoupExtract(object):
         #Sort Corrected essays by keys
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
-        #TO do:
-        #Make sure that you can add from uncorrected dictionary all keys that are not present in corrected dictionary
+        
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
                 CorrectedEssays[k] = v
         return UncorrectedEssays, CorrectedEssays
     
-    def savetoFile(self, sent, newFilename, foldername):
-        '''Save list of paragraphs and saves to text file'''
-        foldername = "../"+foldername
-        if not os.path.exists(os.path.dirname(foldername)):
+    #Save original and corrected sentences
+    def savetoFile(self, sent, newFilename, sorting):
+        '''Save list of sentences to text file'''
+        foldername = "../"+self.foldername
+        print "seriously what the fuck"
+        print os.path.exists(foldername)
+        if not os.path.exists(foldername):
             try:
-                os.makedirs(os.path.dirname(foldername))
+                os.makedirs(foldername)
                 #Add text files to the folder
                 path = os.path.join(foldername, newFilename)
                 with open(path, 'w') as f:
                     #Separate line for each sentence
-                    for line in sent:
-                        inline =  sent_tokenize(line)
+                    for line in sorting:
+                        inline =  sent_tokenize(sent[line])
                         for s in inline:
                             s = s.replace('!', ' !')
                             s = s.replace('.', ' .')
                             s = s.replace(',', ' ,')
-                            s = s.replace('?', ' ?')        
-                            f.write(s.lstrip())    
-                print newFilename+" file saved"
-                                   
+                            s = s.replace('?', ' ?')
+                            #s = s.replace('\n', '')                                                         
+                            f.write(s.lstrip())
+                print newFilename+" file saved"           
             except OSError as exc:
                 raise
+        else:
+            path = os.path.join(foldername, newFilename)
+            with open(path, 'w') as f:
+                #Separate line for each sentence
+                for line in sorting:
+                    inline =  sent_tokenize(sent[line])
+                    for s in inline:
+                        s = s.replace('!', ' !')
+                        s = s.replace('.', ' .')
+                        s = s.replace(',', ' ,')
+                        s = s.replace('?', ' ?')                                     
+                        f.write(s.lstrip()+"\n")  
+            print newFilename+" file saved" 

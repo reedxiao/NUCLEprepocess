@@ -201,8 +201,7 @@ More interestingly  , this technology is being used in human identifictrack the 
 This fact becomes very controversial among people and the possibility of personal information releasing without knowing also brings the public's concern  .
 In some fields  , Surveillance technology did have brought us tremendous benefit and advantage  .
 Logistics and tknowledge tation are major areas of utilization for RFID tech ansportation  , almost all of the people have transport cards for daily transport  .
-Since we do not to bring cash to pthe human r the transportatis   , enormous time has been saved for everybody or the society  , there will be being released fwithout the owner's transportationcauses m  .
-Fopublic gistics  , if all the products are attached to the tags  , it is much easier to count and record all the products  .
+Since we do not to bring cash to pthe human r the transportatis   , enormous time has been saved for everybody or the society  , there will be being released fwithout the owner's transportationcauses m  .Fopublic gistics  , if all the products are attached to the tags  , it is much easier to count and record all the products  .
 This will make the logistic process more effective and also prevent the occurrence of product lost because of the tracking  .
 Since the inventory management is very important for some kind of companies  , this technology is playing a very significant role  .
 The super markets are also using this technology to tag their product  , which can record the conditions of all of the products in time and prevent of stealing  .
