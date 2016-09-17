@@ -5,6 +5,7 @@ Possible better way to parse .sgml format
 '''
 import re
 import os
+import collections
 
 from copy import deepcopy
 from nltk.tokenize import sent_tokenize
@@ -44,14 +45,9 @@ class BSoupExtract(object):
             cleanExtract[dociD] = str
         return cleanExtract
     
-    def extract(self, docId, tag):
-        text = self.extracted[docId]
-        tag = "<"+tag+"(.*?)"+"/"+tag+">"
-        return re.findall(tag, text, re.DOTALL)
-    
     def extractMistakesAndCorrection(self, docId):
         '''output ==> {(DocId, ParId): [{(DocId, ParId): {(docId, start, end): (correction, type)}}]'''
-        #Return dict of mista
+        #Return dict of mistakes
         text = self.extracted[docId]
         tag = "<MISTAKE(.*?)\n</MISTAKE>"
         
@@ -59,13 +55,20 @@ class BSoupExtract(object):
         mistDict ={}
 
         for i in mistList:
+            #Make sure item in list needs to be corrected, if not skip
 
             parId = re.findall("start_par=\"(.*?)\"", i).pop()
-
             typeE = re.findall("<TYPE>(.*?)</TYPE>", i).pop()
-            correction = re.findall("<CORRECTION>(.*?)</CORRECTION>", i)[0]
+           
+           
             start_corr = re.findall("start_off=\"(.*?)\"", i)[0]
             end_corr = re.findall("end_off=\"(.*?)\"", i)[0]
+
+            if len(re.findall("<CORRECTION>(.*?)</CORRECTION>", i)) ==0:
+                correction = ""
+            else:
+                correction = re.findall("<CORRECTION>(.*?)</CORRECTION>", i)[0]
+            
             
             corrDict ={}
             corrDict[(docId, start_corr, end_corr)] = (correction, typeE)
@@ -74,7 +77,8 @@ class BSoupExtract(object):
                 mistDict[(docId, parId)] = []
                 mistDict[(docId, parId)].append(corrDict)
             else:
-                mistDict[(docId, parId)].append(corrDict) 
+                mistDict[(docId, parId)].append(corrDict)
+            #print mistDict 
         return mistDict
     
     def extractParagraph(self, docId):
@@ -95,19 +99,42 @@ class BSoupExtract(object):
 
         finalCorr = {}
         for i, v in corrections.iteritems():
-            sToBeCorr = deepcopy(genSentences[i]) 
-            for l in v:
-                                
-                start = int(l.keys()[0][1])
-                end = int(l.keys()[0][2])
-                
-                cphrase = l.values()[0][0]+origPar[i][end:end+10]
-                ctype = l.values()[0][1]
-
-                if ctype != typeEr:
-                    sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)            
-            finalCorr[i] = sToBeCorr
+            #If the paragraphs has sentences that need to be corrected
+            if i in genSentences.keys():
+                sToBeCorr = deepcopy(genSentences[i]) 
+                for l in v:
+                                    
+                    start = int(l.keys()[0][1])
+                    end = int(l.keys()[0][2])
+                    
+                    cphrase = l.values()[0][0]+origPar[i][end:end+10]
+                    ctype = l.values()[0][1]
+    
+                    if ctype != typeEr:
+                        sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)            
+                finalCorr[i] = sToBeCorr
+                finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
+            #Else if the paragraphs have no incorrect parts
+            else:
+                pass
         return finalCorr
+    
+    def preSave(self):
+        #Generate final dict
+        CorrectedEssays = {}
+        UncorrectedEssays = {}
+        DocIDs = self.extractSentences().keys()
+        #Pass doc Ids through paragraph correction
+        print "Presave in progress"
+        for i in DocIDs:
+            for k, v in self.extractParagraph(i).iteritems():
+                UncorrectedEssays[k] = v 
+            for k, v in self.genCorrections(i, 'Wci'):
+                CorrectedEssays[k] = v 
+        #Sort Corrected essays by keys
+        CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
+        UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
+        return UncorrectedEssays, CorrectedEssays
     
     def savetoFile(self, sent, newFilename, foldername):
         '''Save list of paragraphs and saves to text file'''
