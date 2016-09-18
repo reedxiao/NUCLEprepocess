@@ -1,7 +1,7 @@
 import BSoupExtract
-foldername = "NUCLE2014"
-#fileName = "official.sgml"
-fileName = "official-2014.1.sgml"
+foldername = "NUCLE2013"
+fileName = "official.sgml"
+#fileName = "official-2014.1.sgml"
 #Instatiate object
 NUCLE = BSoupExtract.BSoupExtract(fileName, foldername)
 #Generate corrected sentences and save to tuple
