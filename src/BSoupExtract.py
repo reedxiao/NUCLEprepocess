@@ -7,6 +7,7 @@ import re
 import os
 import collections
 import string
+import itertools
 
 from copy import deepcopy
 from nltk.tokenize import sent_tokenize
@@ -46,6 +47,7 @@ class BSoupExtract(object):
             for lin in txtList:
                 str = str+lin
             cleanExtract[dociD] = str
+
         return cleanExtract
     
     def extractMistakesAndCorrection(self, docId):
@@ -139,13 +141,7 @@ class BSoupExtract(object):
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
                 CorrectedEssays[k] = v
-        print "--------------------------"
-        print "what the fuck is happenning here"
-        print "Uncor "
-        print len(UncorrectedEssays)
-        print "corr "
-        print len(CorrectedEssays)
-        print "---------------------------"
+      
         return UncorrectedEssays, CorrectedEssays
     
     #Save original and corrected sentences
@@ -183,7 +179,8 @@ class BSoupExtract(object):
                         s = s.replace('?', ' ?')                                                       
                         f.write(s.lstrip()+"\n")
         print newFilename+" file saved"    
-        
+    
+    #Deprecated function replaced with length checked eval
     def evalGen(self, inputtxtfile, src_or_targ):
         '''This takes in the input and splits it into the train, test and eval sets for training
         '''
@@ -196,11 +193,6 @@ class BSoupExtract(object):
         evalList = []
         testList = []
         count = 0
-        print "-----------------------------"
-        print "What the fucking hell is wrong with this shitty eval function"
-        print src_or_targ
-        print num_linesInput
-        print "-----------------------------"
         
         with open(inputtxtfile) as fileobject:
             for i in fileobject:
@@ -217,6 +209,66 @@ class BSoupExtract(object):
         self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)
         #Generate evaluation data and Save to file
         self.savetoFile(filter(None, testList), src_or_targ+"-test.txt", None, True)       
+    
+    def LengthCheckedEval(self):
+        #Strip all paragraphs with different numbers of sentences
+        src, trg = self.preSave()
+        keysEval = src.keys()
+        
+        fin_src = []
+        fin_tar = []
+
+        for i in keysEval:
+            if len(sent_tokenize(src[i])) == len(sent_tokenize(trg[i])):
+                fin_src.append(sent_tokenize(src[i]))
+                fin_tar.append(sent_tokenize(trg[i]))
+        
+        finS = list(itertools.chain.from_iterable(fin_src))
+        finT = list(itertools.chain.from_iterable(fin_tar))
+        
+        #Generate train, eval and test sets
+        num_linesInput = len(finS)
+        train = int(round(0.6*num_linesInput))
+        evalD =  int(round(0.3*num_linesInput))
+        #fin lists
+        #Source
+        src_trainList = []
+        src_evalList = []
+        src_testList = []
+        #Train
+        trg_trainList = []
+        trg_evalList = []
+        trg_testList = []
+        #Final lists
+        count  = 0
+        
+        for i, j in zip(finS, finT):
+            if(count <= train):
+                src_trainList.append(i) 
+                trg_trainList.append(j) 
+            elif(count > train and count <=train+evalD):
+                src_evalList.append(i) 
+                trg_evalList.append(j)
+            elif(count > train+evalD):
+                src_testList.append(i)
+                trg_testList.append(j)
+            count = count +1    
+        
+        #Source text
+        #Generate training data and save to file
+        self.savetoFile(src_trainList,"src-train.txt", None, False)
+        #Generate test data and Save to file
+        self.savetoFile(src_evalList, "src-val.txt", None, False)
+        #Generate evaluation data and Save to file
+        self.savetoFile(src_testList, "src-test.txt", None, False)    
+        
+        #target text
+        #Generate training data and save to file
+        self.savetoFile(trg_trainList,"targ-train.txt", None, False)
+        #Generate test data and Save to file
+        self.savetoFile(trg_evalList, "targ-val.txt", None, False)
+        #Generate evaluation data and Save to file
+        self.savetoFile(trg_testList, "targ-test.txt", None, False)    
     
     @staticmethod
     def collapseDict(genEntry):
