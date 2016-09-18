@@ -139,10 +139,17 @@ class BSoupExtract(object):
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
                 CorrectedEssays[k] = v
+        print "--------------------------"
+        print "what the fuck is happenning here"
+        print "Uncor "
+        print len(UncorrectedEssays)
+        print "corr "
+        print len(CorrectedEssays)
+        print "---------------------------"
         return UncorrectedEssays, CorrectedEssays
     
     #Save original and corrected sentences
-    def savetoFile(self, par, newFilename, sorting):
+    def savetoFile(self, par, newFilename, sorting, *evalu):
         '''Save list of sentences to text file'''
         foldername = "../"+self.foldername
         
@@ -158,19 +165,23 @@ class BSoupExtract(object):
                     s = s.replace('!', ' !')
                     s = s.replace('.', ' .')
                     s = s.replace(',', ' ,')
-                    s = s.replace('?', ' ?')                                                        
-                    f.write(s.lstrip())    
-                print newFilename+"dict/eval file saved"  
-            else:
+                    s = s.replace('?', ' ?')
+
+                    if evalu[0] == True: 
+                        f.write(s.lstrip()) 
+                    elif evalu[0] == False:                                                      
+                        f.write(s.lstrip()+"\n")
+                      
+                print newFilename+"dict/eval  file saved"  
+            elif sorting !=None:
                 for line in sorting:
                     inline =  sent_tokenize(par[line])
                     for s in inline:
                         s = s.replace('!', ' !')
                         s = s.replace('.', ' .')
                         s = s.replace(',', ' ,')
-                        s = s.replace('?', ' ?')
-                        #s = s.replace('\n', '')                                                         
-                        f.write(s.lstrip()+"\n")    
+                        s = s.replace('?', ' ?')                                                       
+                        f.write(s.lstrip()+"\n")
         print newFilename+" file saved"    
         
     def evalGen(self, inputtxtfile, src_or_targ):
@@ -185,6 +196,11 @@ class BSoupExtract(object):
         evalList = []
         testList = []
         count = 0
+        print "-----------------------------"
+        print "What the fucking hell is wrong with this shitty eval function"
+        print src_or_targ
+        print num_linesInput
+        print "-----------------------------"
         
         with open(inputtxtfile) as fileobject:
             for i in fileobject:
@@ -196,11 +212,11 @@ class BSoupExtract(object):
                     testList.append(i)
                 count = count +1       
         #Generate training data and save to file
-        self.savetoFile(trainList, src_or_targ+"-train.txt", None)
+        self.savetoFile(filter(None, trainList), src_or_targ+"-train.txt", None, True)
         #Generate test data and Save to file
-        self.savetoFile(evalList, src_or_targ+"-val.txt", None)
+        self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)
         #Generate evaluation data and Save to file
-        self.savetoFile(testList, src_or_targ+"-test.txt", None)       
+        self.savetoFile(filter(None, testList), src_or_targ+"-test.txt", None, True)       
     
     @staticmethod
     def collapseDict(genEntry):

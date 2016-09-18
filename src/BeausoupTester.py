@@ -1,6 +1,7 @@
 import BSoupExtract
-foldername = "NUCLE13"
-fileName = "official.sgml"
+foldername = "NUCLE2014"
+#fileName = "official.sgml"
+fileName = "official-2014.1.sgml"
 #Instatiate object
 NUCLE = BSoupExtract.BSoupExtract(fileName, foldername)
 #Generate corrected sentences and save to tuple
@@ -15,8 +16,8 @@ cTarg = NUCLE.collapseDict(CorrectedText)
 Dorig =  NUCLE.dictGen(cOrig)
 DTarg = NUCLE.dictGen(cTarg)
 #Save dictionaries to text files
-NUCLE.savetoFile(Dorig, "src.dict", None)
-NUCLE.savetoFile(DTarg, "tar.dict", None)
+NUCLE.savetoFile(Dorig, "src.dict", None, False)
+NUCLE.savetoFile(DTarg, "tar.dict", None, False)
 #Save evaluation data sets
-NUCLE.evalGen("OrigText.txt", "src")
-NUCLE.evalGen("TargetText.txt", "tar")
+NUCLE.evalGen("../"+foldername+"/"+"OrigText.txt", "src")
+NUCLE.evalGen("../"+foldername+"/"+"TargetText.txt", "tar")
