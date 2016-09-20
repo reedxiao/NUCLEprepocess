@@ -8,7 +8,7 @@ import numpy as np
 import re
 import os
 import string
-
+from copy import deepcopy
 
 class hdf5wordembedding(object):
     '''This reads in word embeddings corresponding src and target .dict files
@@ -20,15 +20,17 @@ class hdf5wordembedding(object):
         #Location of saved
         filename = name of hdf5 file to be saved 
         foldername = name of folder where hdf5 file is to be saved
+        embed_Dim = number of dimensions in word embedding
         
     '''
     
-    def __init__(self, src, targ, word_embeddings, filename, foldername):
+    def __init__(self, src, targ, word_embeddings, filename, foldername, embed_dim):
         self.src = src
         self.targ = targ
         self.embed = word_embeddings
         self.filename = filename
         self.foldername = foldername
+        self.embed_dim = embed_dim
     
     def readInDict(self):
         src = []
@@ -56,8 +58,24 @@ class hdf5wordembedding(object):
         
         indexedEmbeddings = []
         path = os.path.join(self.foldername, "testEmbedding.txt")
-             
+        
+        template = np.zeros(self.embed_dim)     
         specChar = {"<blank>", "<unk>", "<s>", "</s>"}
+        
+        #load all special tokens
+        #blank char
+        blank = deepcopy(template)
+        blank[0] = 1
+        #unk
+        unk = deepcopy(template)
+        unk[1] = 1
+        #<s>
+        s = deepcopy(template)
+        s[2] = 1
+        #</s>
+        s_ =deepcopy(template)
+        s_[3] = 1
+        
         for aWord in dictWord:
             word = aWord.split()[0]
             
@@ -65,13 +83,21 @@ class hdf5wordembedding(object):
                 for twordVec in we:
                     wordVec = twordVec.split()[0]
                     wordEmbed = twordVec.split()[1:]
-
+                    
                     if word in specChar:
+                      #encode words
                       specChar.remove(word)
-                      indexedEmbeddings.append(word)
+                      if word == "<blank>":
+                          indexedEmbeddings.append(blank)
+                      elif word == "<unk>":
+                          indexedEmbeddings.append(unk)
+                      elif word == "<s>":
+                          indexedEmbeddings.append(s)
+                      elif word == "</s>":
+                          indexedEmbeddings.append(s_)
                     elif word.lower() == wordVec.lower():
-                      indexedEmbeddings.append(wordEmbed)
-                      
+                      floatVec = [float(i) for i in wordEmbed]
+                      indexedEmbeddings.append(floatVec)             
         return indexedEmbeddings
             
     def GenExp(self, embed_src):

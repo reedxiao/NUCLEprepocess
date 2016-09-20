@@ -13,7 +13,9 @@ hdf5 = hdf5wordembedding.hdf5wordembedding(src=foldername+"/src.dict",
                                            targ= foldername+"/tar.dict",
                                            word_embeddings="wordEmbedding/testEmbedding.txt",
                                            filename = "test.hdf5", 
-                                           foldername= "../wordEmbedding")
+                                           foldername= "../wordEmbedding",
+                                           embed_dim = 50)
+                
 #Generate test benchmark
 #hdf5.GenExp("../../../glove.6B/glove.6B.50d.txt")
 #Read in .dict files
