@@ -1,7 +1,7 @@
 '''
 Created on 11/09/2016
 @author: kiarie ndegwa
-Possible better way to parse .sgml format
+Better way to parse .sgml format
 '''
 import re
 import os
