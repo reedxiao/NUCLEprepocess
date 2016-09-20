@@ -57,17 +57,15 @@ class hdf5wordembedding(object):
         #search through source and find equivalent text
         indexedEmbeddings = []
         path = os.path.join(self.foldername, "testEmbedding.txt")
-      
-        with open(path) as we:
-            for twordVec in we:
-               
-                wordVec = twordVec.split()[0]
-                wordEmbed = twordVec.split()[1:]
-                
-                specChar = {"<blank>", "<unk>", "<s>", "</s>"}
-                for aWord in dictWord:
-                    
-                    word = aWord.split()[0] 
+             
+        specChar = {"<blank>", "<unk>", "<s>", "</s>"}
+        for aWord in dictWord:
+            word = aWord.split()[0]
+            
+            with open(path) as we:
+                for twordVec in we:
+                    wordVec = twordVec.split()[0]
+                    wordEmbed = twordVec.split()[1:]
                     #print"------------------------"
                     #print "what the fuck is going on here"
                     #print wordVec
@@ -76,21 +74,26 @@ class hdf5wordembedding(object):
                     #Get rid of special characters and replace with blank embeddings
                     #print "Searching for word in dict :"+word
                     if word in specChar:
-                        specChar.remove(word)
-                        print "found special character"
-                        indexedEmbeddings.append(word)
-                        
-                    elif word == wordVec:
-                        print "************embedding added************"
-                        indexedEmbeddings.append(wordEmbed)
-                        
+                      specChar.remove(word)
+                      #print "found special character"
+                      temp = {}
+                      temp[word] = word
+                      indexedEmbeddings.append(temp)
+                      
+                    elif word.lower() == wordVec.lower():
+                      #print "************embedding added************"
+                      temp = {}
+                      temp[word] = wordEmbed
+                      indexedEmbeddings.append(temp)
+                                    
         print "fucking hell"
-        print len(indexedEmbeddings)
+        print indexedEmbeddings
+                  
         '''with open(path, 'w') as f:
-            print "writing file to test embeddings"
-            for e in out:
-                f.write(e)
-            print "Finished writing embeddings to test file"'''
+                        print "writing file to test embeddings"
+                        for e in out:
+                            f.write(e)
+                        print "Finished writing embeddings to test file"'''
             
     def GenExp(self, embed_src):
         #This generates an experimental .txt limit word2vec data set
@@ -111,7 +114,7 @@ class hdf5wordembedding(object):
                     word = Sline[0]
                     WEmbedding = Sline[1:]
                     
-                    if word == "'":
+                    if word == "technology":
                         print "found this piece of shit"
                         print WEmbedding
                     
