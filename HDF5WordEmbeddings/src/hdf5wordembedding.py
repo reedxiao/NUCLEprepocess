@@ -112,21 +112,27 @@ class hdf5wordembedding(object):
         '''
         #Load list of found vectors
         wordEmbed = self.genWordText(src_targ)
-        name = ""
+        print "Embedding loaded"
+        print type(wordEmbed)
         
+        name = ""
+        #wordEmbed = np.random.rand(100, 100)
         print "Generating names"
         if src_targ == "src":
             name = hdf5Name+"_"+"enc_"
         else:
             name =hdf5Name+"_"+"dec_"
         print "Generating hdf5 files"
+        
         hf = h5py.File('../../'+name+'data.hdf5', 'w') 
-        dset = hf.create_dataset('word_vecs',  (,) dtype=arr)
-        count = 1
-        for i in wordEmbed:
-            print "Saving word embeddings"
-            dset['word_vec'][count] = i
-            count+=1
-            
+        
+        #Add python array into numpy array of arrays
+        ndata = np.array([np.array(xi) for xi in wordEmbed if type(xi)=="list"])
+        #Write numpy array to hdf5 file
+        dset = hf.create_dataset('word_vecs', data=ndata)
+    
+    def readHdf(self):
+        pass
+        
 if __name__ == '__main__':
     pass
