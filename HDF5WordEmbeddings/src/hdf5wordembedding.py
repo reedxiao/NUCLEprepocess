@@ -9,6 +9,7 @@ import re
 import os
 import string
 
+
 class hdf5wordembedding(object):
     '''This reads in word embeddings corresponding src and target .dict files
         
@@ -45,16 +46,14 @@ class hdf5wordembedding(object):
     def genWordText(self, src_targ):
         #Generates new text file that can be converted to hdf5 format
            
-        #This finds the equivalent word embeddings within the .txt file
+        #This finds the equivalent word embeddings within the wordvec .txt file
         if src_targ == "src":
             print "src file selected"
             dictWord, _ = self.readInDict()
         elif src_targ == "tar":
             print "tar file selected"
             _, dictWord = self.readInDict()
-        #Convert dict word to searchable dictionary
         
-        #search through source and find equivalent text
         indexedEmbeddings = []
         path = os.path.join(self.foldername, "testEmbedding.txt")
              
@@ -66,34 +65,14 @@ class hdf5wordembedding(object):
                 for twordVec in we:
                     wordVec = twordVec.split()[0]
                     wordEmbed = twordVec.split()[1:]
-                    #print"------------------------"
-                    #print "what the fuck is going on here"
-                    #print wordVec
-                    #print word
-                    #print "---------------------- "
-                    #Get rid of special characters and replace with blank embeddings
-                    #print "Searching for word in dict :"+word
+
                     if word in specChar:
                       specChar.remove(word)
-                      #print "found special character"
-                      temp = {}
-                      temp[word] = word
-                      indexedEmbeddings.append(temp)
-                      
+                      indexedEmbeddings.append(word)
                     elif word.lower() == wordVec.lower():
-                      #print "************embedding added************"
-                      temp = {}
-                      temp[word] = wordEmbed
-                      indexedEmbeddings.append(temp)
-                                    
-        print "fucking hell"
-        print indexedEmbeddings
-                  
-        '''with open(path, 'w') as f:
-                        print "writing file to test embeddings"
-                        for e in out:
-                            f.write(e)
-                        print "Finished writing embeddings to test file"'''
+                      indexedEmbeddings.append(wordEmbed)
+                      
+        return indexedEmbeddings
             
     def GenExp(self, embed_src):
         #This generates an experimental .txt limit word2vec data set
@@ -120,13 +99,34 @@ class hdf5wordembedding(object):
                     
                     out.append(line)
                     count+=1
-        print count
         with open(path, 'w') as f:
             print "writing file to test embeddings"
             for e in out:
                 f.write(e)
             print "Finished writing embeddings to test file"
             
+    def savehdf5(self, hdf5Name, src_targ, embedLength):
+        '''Takes in list of embeddings and writes them to hdf5 file
+        hdf5Name ==> Name of file to be written
+        src_targ ==> word enc or dec
+        '''
+        #Load list of found vectors
+        wordEmbed = self.genWordText(src_targ)
+        name = ""
+        
+        print "Generating names"
+        if src_targ == "src":
+            name = hdf5Name+"_"+"enc_"
+        else:
+            name =hdf5Name+"_"+"dec_"
+        print "Generating hdf5 files"
+        hf = h5py.File('../../'+name+'data.hdf5', 'w') 
+        dset = hf.create_dataset('word_vecs',  (,) dtype=arr)
+        count = 1
+        for i in wordEmbed:
+            print "Saving word embeddings"
+            dset['word_vec'][count] = i
+            count+=1
             
 if __name__ == '__main__':
     pass
