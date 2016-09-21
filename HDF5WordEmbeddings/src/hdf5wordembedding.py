@@ -76,31 +76,34 @@ class hdf5wordembedding(object):
         s_ =deepcopy(template)
         s_[3] = 1
         
+        word_Vecs = open(path).readlines()
+        
         for aWord in dictWord:
             word = aWord.split()[0]
-            
-            with open(path) as we:
-                for twordVec in we:
-                    wordVec = twordVec.split()[0]
-                    wordEmbed = twordVec.split()[1:]
-                    
-                    if word in specChar:
-                      #encode words
-                      specChar.remove(word)
-                      if word == "<blank>":
-                          indexedEmbeddings.append(blank)
-                      elif word == "<unk>":
-                          indexedEmbeddings.append(unk)
-                      elif word == "<s>":
-                          indexedEmbeddings.append(s)
-                      elif word == "</s>":
-                          indexedEmbeddings.append(s_)
-                      #print "====Special token, embedding generated===="
-                    elif word.lower() == wordVec.lower():
-                      floatVec = [float(i) for i in wordEmbed]
-                      indexedEmbeddings.append(floatVec)    
-                      #print "******Normal embedding generated!******"
+            for twordVec in word_Vecs:
+                wordVec = twordVec.split()[0]
+                wordEmbed = twordVec.split()[1:]
+
+                if word in specChar:
+                  #encode words
+                  specChar.remove(word)
+                  if word == "<blank>":
+                      indexedEmbeddings.append(blank)
+                  elif word == "<unk>":
+                      indexedEmbeddings.append(unk)
+                  elif word == "<s>":
+                      indexedEmbeddings.append(s)
+                  elif word == "</s>":
+                      indexedEmbeddings.append(s_)
+                  print "====Special token, embedding generated===="
+                
+                elif word.lower() == wordVec.lower():
+                  floatVec = [float(i) for i in wordEmbed]
+                  indexedEmbeddings.append(floatVec)    
+                  print "******Normal embedding generated!******"
+                
         print ">>>>>>>>>>>>>Final Indexed embeddings generated"         
+        print len(indexedEmbeddings)
         return indexedEmbeddings
             
     def GenExp(self, embed_src, filename):
