@@ -58,7 +58,7 @@ class hdf5wordembedding(object):
         indexedEmbeddings = []
         path = os.path.join(self.foldername, name+".txt")
         
-        template = np.array(np.zeros(self.embed_dim))     
+        template = np.array(np.zeros(self.embed_dim)).astype(float)   
         
         specChar = {"<blank>", "<unk>", "<s>", "</s>"}
         
@@ -68,13 +68,13 @@ class hdf5wordembedding(object):
         blank = deepcopy(template)
         #unk
         unk = deepcopy(template)
-        unk[1] = float(1.0000000)
+        unk[1] = float(1)
         #<s>
         s = deepcopy(template)
-        s[2] = float(1.000000000)
+        s[2] = float(1)
         #</s>
         s_ =deepcopy(template)
-        s_[3] = float(1.000000000)
+        s_[3] = float(1)
         
         #load word embeddings and add them to dictionary for faster search
         word_Vecs = open(path).readlines()
@@ -161,7 +161,7 @@ class hdf5wordembedding(object):
             name = hdf5Name+"_"+"enc_"
         else:
             name =hdf5Name+"_"+"dec_"
-            
+      
         print "Generating hdf5 files"
         hf = h5py.File('../../'+name+'data.hdf5', 'w') 
         
@@ -169,12 +169,7 @@ class hdf5wordembedding(object):
         ndata = np.array([np.array(xi) for xi in wordEmbed])
         print "size of numpy array"
         print len(ndata)
-        print ndata[0]
-        print ndata[1]
-        print ndata[2]
-        print ndata[3]
-        print ndata[6]
-        print ndata[10]
+
         #Write numpy array to hdf5 file
         print "Adding numpy array to hdf5"
       
@@ -190,7 +185,7 @@ class hdf5wordembedding(object):
             data = hf.get('word_vecs')
             np_data = np.array(data)
             print('Shape of the array dataset_1: \n', np_data.shape)
-            print np_data[100]
+            print np_data[0]
         
 if __name__ == '__main__':
     pass
