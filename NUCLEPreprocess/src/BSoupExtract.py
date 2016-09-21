@@ -15,7 +15,7 @@ import nltk
 
 class BSoupExtract(object):
     '''
-    Experiment with Beautiful Soup, which was shit, so had to write my own .sgml parser
+    Experiment with Beautiful Soup html, .sgml parser, which was shit, so had to write my own parser
     '''
     def __init__(self, filename, foldername):
         '''
