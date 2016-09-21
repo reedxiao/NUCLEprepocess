@@ -46,8 +46,7 @@ class hdf5wordembedding(object):
         return src, targ
     
     def genWordText(self, src_targ, name):
-        #Generates new text file that can be converted to hdf5 format
-           
+        #Generates new text file that can be converted to hdf5 format   
         #This finds the equivalent word embeddings within the wordvec .txt file
         if src_targ == "src":
             print ">>>src file selected"
@@ -59,7 +58,8 @@ class hdf5wordembedding(object):
         indexedEmbeddings = []
         path = os.path.join(self.foldername, name+".txt")
         
-        template = np.zeros(self.embed_dim)     
+        template = np.array(np.zeros(self.embed_dim))     
+        
         specChar = {"<blank>", "<unk>", "<s>", "</s>"}
         
         print ">>>Generating word embeddings"
@@ -68,39 +68,50 @@ class hdf5wordembedding(object):
         blank = deepcopy(template)
         #unk
         unk = deepcopy(template)
-        unk[1] = 1
+        unk[1] = float(1.0000000)
         #<s>
         s = deepcopy(template)
-        s[2] = 1
+        s[2] = float(1.000000000)
         #</s>
         s_ =deepcopy(template)
-        s_[3] = 1
+        s_[3] = float(1.000000000)
         
+        #load word embeddings and add them to dictionary for faster search
         word_Vecs = open(path).readlines()
-        
+        word_vec_dict = {}
+        for word in word_Vecs:
+            w = word.split()[0]
+            v = word.split()[1:]
+            word_vec_dict[w.lower()] = v
+    
         for aWord in dictWord:
             word = aWord.split()[0]
-            for twordVec in word_Vecs:
-                wordVec = twordVec.split()[0]
-                wordEmbed = twordVec.split()[1:]
-
-                if word in specChar:
-                  #encode words
-                  specChar.remove(word)
-                  if word == "<blank>":
-                      indexedEmbeddings.append(blank)
-                  elif word == "<unk>":
-                      indexedEmbeddings.append(unk)
-                  elif word == "<s>":
-                      indexedEmbeddings.append(s)
-                  elif word == "</s>":
-                      indexedEmbeddings.append(s_)
-                  print "====Special token, embedding generated===="
-                
-                elif word.lower() == wordVec.lower():
-                  floatVec = [float(i) for i in wordEmbed]
-                  indexedEmbeddings.append(floatVec)    
-                  print "******Normal embedding generated!******"
+            
+            if word in specChar:
+              #encode words
+              specChar.remove(word)
+              if word == "<blank>":
+                  #t = np.asarray(blank, dtype=np.float)
+                  t = [float(i) for i in blank]
+                  indexedEmbeddings.append(t)
+              elif word == "<unk>":
+                  #t = np.asarray(unk, dtype=np.float)
+                  t = [float(i) for i in unk]
+                  indexedEmbeddings.append(t)
+              elif word == "<s>":
+                  t = [float(i) for i in s]
+                  #t = np.asarray(s, dtype=np.float)
+                  indexedEmbeddings.append(t)
+              elif word == "</s>":
+                  #t = np.asarray(s_, dtype=np.float)
+                  t = [float(i) for i in s_]
+                  indexedEmbeddings.append(t)
+              #print "====Special token, embedding generated===="
+            
+            if word.lower() in word_vec_dict:
+              floatVec = [float(i) for i in word_vec_dict[word.lower()]]
+              indexedEmbeddings.append(floatVec)    
+                  #print "******Normal embedding generated!******"
                 
         print ">>>>>>>>>>>>>Final Indexed embeddings generated"         
         print len(indexedEmbeddings)
@@ -158,9 +169,17 @@ class hdf5wordembedding(object):
         ndata = np.array([np.array(xi) for xi in wordEmbed])
         print "size of numpy array"
         print len(ndata)
+        print ndata[0]
+        print ndata[1]
+        print ndata[2]
+        print ndata[3]
+        print ndata[6]
+        print ndata[10]
         #Write numpy array to hdf5 file
         print "Adding numpy array to hdf5"
+      
         dset = hf.create_dataset('word_vecs', data=ndata)
+    
     
     def readhdf5(self, name):
         #Test generated hdf5 file
