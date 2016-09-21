@@ -66,7 +66,6 @@ class hdf5wordembedding(object):
         #load all special tokens
         #blank char
         blank = deepcopy(template)
-        blank[0] = 1
         #unk
         unk = deepcopy(template)
         unk[1] = 1
