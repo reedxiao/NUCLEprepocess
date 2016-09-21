@@ -21,4 +21,7 @@ hdf5 = hdf5wordembedding.hdf5wordembedding(src=foldername+"/src.dict",
 #Read in .dict files
 
 #Generate hdf5 files #fingers crossed
-hdf5.savehdf5("test", "src", 50)
+#hdf5.savehdf5("test", "src", 50)
+
+#Test hdf5 file generated
+hdf5.readhdf5("test_enc_")

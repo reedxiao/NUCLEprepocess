@@ -138,8 +138,8 @@ class hdf5wordembedding(object):
         '''
         #Load list of found vectors
         wordEmbed = self.genWordText(src_targ)
-        print "Embedding loaded"
-        print type(wordEmbed)
+        print "Embedding loaded.. its size is.."
+        print len(wordEmbed)
         
         name = ""
         #wordEmbed = np.random.rand(100, 100)
@@ -153,12 +153,22 @@ class hdf5wordembedding(object):
         hf = h5py.File('../../'+name+'data.hdf5', 'w') 
         
         #Add python array into numpy array of arrays
-        ndata = np.array([np.array(xi) for xi in wordEmbed if type(xi)=="list"])
+        ndata = np.array([np.array(xi) for xi in wordEmbed])
+        print "size of numpy array"
+        print len(ndata)
         #Write numpy array to hdf5 file
         dset = hf.create_dataset('word_vecs', data=ndata)
     
-    def readHdf(self):
-        pass
+    def readhdf5(self, name):
+        #Test generated hdf5 file
+        filename = '../../'+name+'data.hdf5'
+        
+        with h5py.File(filename,'r') as hf:
+            print('List of arrays in this file: \n', hf.keys())
+            data = hf.get('word_vecs')
+            np_data = np.array(data)
+            print('Shape of the array dataset_1: \n', np_data.shape)
+            print np_data[50]
         
 if __name__ == '__main__':
     pass
