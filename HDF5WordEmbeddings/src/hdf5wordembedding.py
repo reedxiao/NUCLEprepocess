@@ -105,7 +105,7 @@ class hdf5wordembedding(object):
         print len(indexedEmbeddings)
         print "Embeddings with correct tokens added"
         print len(finalEmbed)
-        return finalEmbed
+        return  finalEmbed
             
     def GenExp(self, embed_src, filename):
         #This generates an experimental .txt limited word2vec data set
