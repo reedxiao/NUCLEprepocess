@@ -54,7 +54,9 @@ class hdf5wordembedding(object):
         elif src_targ == "tar":
             print ">>>tar file selected"
             _, dictWord = self.readInDict()
-          
+        print "Size of dictionary loaded"
+        print len(dictWord)
+        
         indexedEmbeddings = []
         path = os.path.join(self.foldername, name+".txt")
                 
@@ -96,14 +98,14 @@ class hdf5wordembedding(object):
         s_ = np.array(deepcopy(template))
         s_[3] = float(1)
                 
-        finalEmbed = np.vstack((s, s_, unk, blank, ndata))
+        finalEmbed = np.vstack((blank, unk, s, s_, ndata))
         #get average for unk token
         print ">>>>>>>>>>>>>Final length of Indexed embeddings generated"         
         print "Embeddings without special tokens"
         print len(indexedEmbeddings)
         print "Embeddings with correct tokens added"
         print len(finalEmbed)
-        return finalEmbed
+        return  finalEmbed
             
     def GenExp(self, embed_src, filename):
         #This generates an experimental .txt limited word2vec data set
@@ -167,7 +169,7 @@ class hdf5wordembedding(object):
             data = hf.get('word_vecs')
             np_data = np.array(data)
             print('Shape of the array dataset_1: \n', np_data.shape)
-            print np_data[0]
+            print np_data[1]
         
 if __name__ == '__main__':
     pass
