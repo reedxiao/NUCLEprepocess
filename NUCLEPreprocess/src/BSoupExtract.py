@@ -90,9 +90,22 @@ class BSoupExtract(object):
         '''output ==> {(DocId, ParId): list(Paragraph)}'''
         text = self.extracted[docId]
         tag = "<P>\n(.*?)\n</P>"
-        listPar = re.findall(tag, text, re.DOTALL)
+          
+        noR = text.split("<REFERENCE>")
+        if len(noR) >=1:
+            SHIT = noR[0]
+            shitty = SHIT.split("References")
+            if len(shitty)!=0:
+                listPar = re.findall(tag, shitty[0], re.DOTALL)
+            else:
+                listPar = re.findall(tag, SHIT, re.DOTALL)
+        else:
+            listPar = re.findall(tag, text, re.DOTALL)
+            
         ParDict = {}
+        
         for i in range(0, len(listPar)):
+            #print listPar[i]
             ParDict[docId, str(i)] = listPar[i]
         return ParDict
     
@@ -106,34 +119,38 @@ class BSoupExtract(object):
         finalCorr = {}
         for i, v in corrections.iteritems():
             #If the paragraphs has sentences that need to be corrected
+            if i in genSentences:
                 sToBeCorr = deepcopy(genSentences[i]) 
                 for l in v:
                     start = int(l.keys()[0][1])
                     end = int(l.keys()[0][2])
                     
+                    #print "the start {}, the end {}".format(start, end)
                     cphrase = l.values()[0][0]+origPar[i][end:end+10]
                     ctype = l.values()[0][1]
-    
-                    if ctype != typeEr:
-                        sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)            
+                    
+                    #generate corrected sentence
+                    sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
+                
                 finalCorr[i] = sToBeCorr
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
-           
         return finalCorr
     
     def preSave(self):
-        #Generate final dict
         CorrectedEssays = {}
         UncorrectedEssays = {}
         DocIDs = self.extractSentences().keys()
         #Pass doc Ids through paragraph correction
         print "Presave in progress"
+       
+        #This is meant to generate error exceptions
         for i in DocIDs:
             for k, v in self.extractParagraph(i).iteritems():    
                 UncorrectedEssays[k] = v 
-            for k, v in self.genCorrections(i, 'Wci').iteritems():
+            for k, v in self.genCorrections(i, 'Wci').iteritems():                
                 CorrectedEssays[k] = v 
+                #print v
         #Sort Corrected essays by keys
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
@@ -167,11 +184,12 @@ class BSoupExtract(object):
                         f.write(s.lstrip()) 
                     elif evalu[0] == False:                                                      
                         f.write(s.lstrip()+"\n")
-                      
                 print newFilename+"dict/eval  file saved"  
             elif sorting !=None:
                 for line in sorting:
-                    inline =  sent_tokenize(par[line])
+                    h =  par[line]
+                    eh = re.sub(r'[^\x00-\x7F]+',' ', h)
+                    inline =  sent_tokenize(eh)
                     for s in inline:
                         s = s.replace('!', ' !')
                         s = s.replace('.', ' .')
@@ -186,29 +204,24 @@ class BSoupExtract(object):
         '''
         inputtxtfile = "../"+self.foldername+"/"+inputtxtfile
         num_linesInput = sum(1 for line in open(inputtxtfile))
-        train = int(round(0.6*num_linesInput))
+        train = int(round(0.7*num_linesInput))
         evalD =  int(round(0.3*num_linesInput))
         
         trainList = []
         evalList = []
-        testList = []
         count = 0
         
         with open(inputtxtfile) as fileobject:
             for i in fileobject:
                 if(count <= train):
                     trainList.append(i) 
-                elif(count > train and count <=train+evalD):
+                elif(count > train):
                     evalList.append(i) 
-                elif(count > train+evalD):
-                    testList.append(i)
                 count = count +1       
         #Generate training data and save to file
         self.savetoFile(filter(None, trainList), src_or_targ+"-train.txt", None, True)
         #Generate test data and Save to file
-        self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)
-        #Generate evaluation data and Save to file
-        self.savetoFile(filter(None, testList), src_or_targ+"-test.txt", None, True)       
+        self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)     
     
     def LengthCheckedEval(self):
         #Strip all paragraphs with different numbers of sentences
@@ -219,9 +232,14 @@ class BSoupExtract(object):
         fin_tar = []
 
         for i in keysEval:
-            if len(sent_tokenize(src[i])) == len(sent_tokenize(trg[i])):
-                fin_src.append(sent_tokenize(src[i]))
-                fin_tar.append(sent_tokenize(trg[i]))
+            h =  trg[i]
+            eh = re.sub(r'[^\x00-\x7F]+',' ', h)
+            
+            h1 =  src[i]
+            eh1 = re.sub(r'[^\x00-\x7F]+',' ', h1)
+            if len(sent_tokenize(eh1)) == len(sent_tokenize(eh)):
+                fin_src.append(sent_tokenize(eh1))
+                fin_tar.append(sent_tokenize(eh))
         
         finS = list(itertools.chain.from_iterable(fin_src))
         finT = list(itertools.chain.from_iterable(fin_tar))

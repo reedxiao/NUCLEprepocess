@@ -8,7 +8,7 @@ Change the foldername and filename of .sgml file to extract sentences in the req
 '''
 import BSoupExtract
 foldername = "NUCLE2014"
-fileName = "official-2014.1.sgml"
+fileName = "nucle3.2.sgml"
 #fileName = "official-2014.1.sgml"
 #Instatiate object
 
