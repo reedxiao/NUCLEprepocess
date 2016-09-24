@@ -7,9 +7,9 @@ Test script for hdf5 word embedding
 '''
 
 import hdf5wordembedding
-foldername = "../../NUCLEPreprocess/NUCLE2013"
-name = "nucle2013"
-dim = 50
+foldername = "../../NUCLEPreprocess/NUCLE2014"
+name = "nucle2014"
+dim = 300
 embeddingFile = "glove.6B."+str(dim)+"d.txt"
 embeddingFolder = "glove.6B"
 
@@ -24,7 +24,8 @@ hdf5 = hdf5wordembedding.hdf5wordembedding(src=foldername+"/"+name+".src.dict",
 hdf5.GenExp("../../../"+embeddingFolder+"/"+embeddingFile, name+"_"+str(dim)+"d")
 
 #Generate hdf5 files #fingers crossed
+hdf5.savehdf5(name+"_"+str(dim)+"d", "tar")
 hdf5.savehdf5(name+"_"+str(dim)+"d", "src")
-
 #Test hdf5 file generated
+hdf5.readhdf5(name+"_"+str(dim)+"d_dec_")
 hdf5.readhdf5(name+"_"+str(dim)+"d_enc_")
