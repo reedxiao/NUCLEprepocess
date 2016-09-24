@@ -228,17 +228,17 @@ class BSoupExtract(object):
         
         #Generate train, eval and test sets
         num_linesInput = len(finS)
-        train = int(round(0.6*num_linesInput))
+        train = int(round(0.7*num_linesInput))
         evalD =  int(round(0.3*num_linesInput))
+        
         #fin lists
         #Source
         src_trainList = []
         src_evalList = []
-        src_testList = []
+        
         #Train
         trg_trainList = []
         trg_evalList = []
-        trg_testList = []
         #Final lists
         count  = 0
         
@@ -246,12 +246,9 @@ class BSoupExtract(object):
             if(count <= train):
                 src_trainList.append(i) 
                 trg_trainList.append(j) 
-            elif(count > train and count <=train+evalD):
+            elif(count > train):
                 src_evalList.append(i) 
                 trg_evalList.append(j)
-            elif(count > train+evalD):
-                src_testList.append(i)
-                trg_testList.append(j)
             count = count +1    
         
         #Source text
@@ -259,17 +256,13 @@ class BSoupExtract(object):
         self.savetoFile(src_trainList,"src-train.txt", None, False)
         #Generate test data and Save to file
         self.savetoFile(src_evalList, "src-val.txt", None, False)
-        #Generate evaluation data and Save to file
-        self.savetoFile(src_testList, "src-test.txt", None, False)    
-        
+       
         #target text
         #Generate training data and save to file
         self.savetoFile(trg_trainList,"targ-train.txt", None, False)
         #Generate test data and Save to file
         self.savetoFile(trg_evalList, "targ-val.txt", None, False)
-        #Generate evaluation data and Save to file
-        self.savetoFile(trg_testList, "targ-test.txt", None, False)    
-    
+       
     @staticmethod
     def collapseDict(genEntry):
         outputList = []
