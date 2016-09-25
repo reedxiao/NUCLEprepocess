@@ -128,10 +128,13 @@ class BSoupExtract(object):
                     #print "the start {}, the end {}".format(start, end)
                     cphrase = l.values()[0][0]+origPar[i][end:end+10]
                     ctype = l.values()[0][1]
-                    
-                    #generate corrected sentence
-                    sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
-                
+               
+                    if  ctype != typeEr:
+                        #generate corrected sentence
+                        sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
+                    else:
+                        #Ignore collocation error
+                        continue
                 finalCorr[i] = sToBeCorr
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
