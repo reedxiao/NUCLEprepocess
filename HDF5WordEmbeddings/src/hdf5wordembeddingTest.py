@@ -9,7 +9,7 @@ Test script for hdf5 word embedding
 import hdf5wordembedding
 foldername = "../../NUCLEPreprocess/NUCLE2014"
 name = "nucle2014"
-dim = 300
+dim = 100
 embeddingFile = "glove.6B."+str(dim)+"d.txt"
 embeddingFolder = "glove.6B"
 

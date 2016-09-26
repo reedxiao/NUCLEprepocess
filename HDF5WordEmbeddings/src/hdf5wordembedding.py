@@ -73,7 +73,7 @@ class hdf5wordembedding(object):
             v = word.split()[1:]
             word_vec_dict[w.lower()] = v
         print "Generated embedding dictionary"
-        
+
         for aWord in dictWord:
             word = aWord.split()[0]  
             if word.lower() in word_vec_dict:
@@ -140,8 +140,9 @@ class hdf5wordembedding(object):
         hdf5Name ==> Name of file to be written
         src_targ ==> word enc or dec
         '''
-        #Load list of found vectors
-        wordEmbed = self.genWordText(src_targ, hdf5Name)
+  
+        wordEmbed =self.genWordText(src_targ, hdf5Name)
+        
         print "Embedding loaded.. with size is:"
         print len(wordEmbed)
         

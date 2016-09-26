@@ -187,6 +187,7 @@ class BSoupExtract(object):
                         f.write(s.lstrip()) 
                     elif evalu[0] == False:                                                      
                         f.write(s.lstrip()+"\n")
+                        
                 print newFilename+"dict/eval  file saved"  
             elif sorting !=None:
                 for line in sorting:
