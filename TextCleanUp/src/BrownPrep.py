@@ -24,18 +24,28 @@ class BrownCleanUp(object):
         '''
         path = self.fileDir
         rx_sequence=re.compile(r"^//(.+?) $",re.MULTILINE)
-        
+        print "Opening final file: {}".format(self.fileName)
+        f = open(self.fileName, 'w')
+
+        print "Generating brown corpus"
         for filename in os.listdir(path):
             filepath1 = self.fileDir+"/"+filename 
             tmp = []
-            with open(filepath1, 'r') as o, open(self.fileName, 'w') as f:   
+            sent = ""
+            with open(filepath1, 'r') as o:   
+                
                 data=o.read().replace('\n', '')
+                
                 dataClean = re.sub("! !", "! ", data, flags = re.M)
-                dataClean = re.sub("\? \?", "\? ", dataClean, flags = re.M)
+                dataClean = re.sub("\? \?", "? ", dataClean, flags = re.M)
                 dataClean = re.sub("[.]+", ". ", dataClean, flags = re.M)
+                dataClean = re.sub("\'\' ", " ", dataClean, flags = re.M) 
+                dataClean = re.sub("\`\` ", " ", dataClean, flags = re.M) 
+                dataClean = re.sub("; ;", "; ", dataClean, flags = re.M) 
+                dataClean = re.sub("/", " ", dataClean, flags = re.M) 
                 
                 sent = sent_tokenize(dataClean)
-                 
+
                 for s in sent:   
                     s = s.replace('!', ' !')
                     s = s.replace('.', ' .' )
@@ -43,6 +53,8 @@ class BrownCleanUp(object):
                     s = s.replace('?', ' ?')
                     s = s.lstrip()
                     tmp.append(s) 
-                
+            
                 for l in tmp:
                     f.write(l.lstrip()+"\n")
+                    
+        print "Brown corpus generated"
