@@ -87,14 +87,30 @@ class BSoupExtract(object):
         return mistDict
     
     def extractParagraph(self, docId):
-        '''output ==> {(DocId, ParId): list(Paragraph)}'''
+        '''output ==> {(DocId, ParId): list(Paragraph)}
+        Why nucle2014 so terrible? 
+        '''
         text = self.extracted[docId]
         tag = "<P>\n(.*?)\n</P>"
           
         noR = text.split("<REFERENCE>")
+        dataClean = re.sub("<REFERENCE>.*?</REFERENCE>", "", text, flags = re.DOTALL)
+        dataClean = re.sub("\-\-.*?", "", text, flags = re.DOTALL)
+        dataClean = re.sub("\[.*?\]", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("\(.*?\)", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("http*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("www*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("/\/\*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("/{*?/}", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("p:.*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("Retrieved.*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("<{.*?}>", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("www.*?.com|www.*?.org", "", dataClean, flags = re.DOTALL)
+        
+        noR = dataClean.split("Reference")
         if len(noR) >=1:
             SHIT = noR[0]
-            shitty = SHIT.split("References")
+            shitty = SHIT.split("Reference")
             if len(shitty)!=0:
                 listPar = re.findall(tag, shitty[0], re.DOTALL)
             else:
