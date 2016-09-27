@@ -61,7 +61,6 @@ class BSoupExtract(object):
 
         for i in mistList:
             #Make sure item in list needs to be corrected, if not skip
-
             parId = re.findall("start_par=\"(.*?)\"", i).pop()
             typeE = re.findall("<TYPE>(.*?)</TYPE>", i).pop()
            
@@ -73,7 +72,6 @@ class BSoupExtract(object):
                 correction = ""
             else:
                 correction = re.findall("<CORRECTION>(.*?)</CORRECTION>", i)[0]
-            
             
             corrDict ={}
             corrDict[(docId, start_corr, end_corr)] = (correction, typeE)
@@ -88,37 +86,31 @@ class BSoupExtract(object):
     
     def extractParagraph(self, docId):
         '''output ==> {(DocId, ParId): list(Paragraph)}
-        Why nucle2014 so terrible? 
+            Why nucle2014 so terrible? Work in progress
         '''
         text = self.extracted[docId]
-        tag = "<P>\n(.*?)\n</P>"
-          
-        noR = text.split("<REFERENCE>")
-        dataClean = re.sub("<REFERENCE>.*?</REFERENCE>", "", text, flags = re.DOTALL)
-        dataClean = re.sub("\-\-.*?", "", text, flags = re.DOTALL)
+        
+        dataClean = re.sub("<REFERENCE>\n<P>(.*?)</P>\n</REFERENCE>", "", text, flags = re.DOTALL)
+        dataClean = re.sub("--.*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("\[.*?\]", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("\(.*?\)", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("http*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("www*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("/\/\*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("/{*?/}", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("{.*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("p:.*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("Retrieved.*?", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("<{.*?}>", "", dataClean, flags = re.DOTALL)
         dataClean = re.sub("www.*?.com|www.*?.org", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("w.*?.com|w.*?.htm.*?| w.*?.pdf", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("Overview .*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("Bibliography.*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("BIBLIOGRAPHY.*?", "", dataClean, flags = re.DOTALL)
+        dataClean = re.sub("References.*?", "", dataClean, flags = re.DOTALL)
         
-        noR = dataClean.split("Reference")
-        if len(noR) >=1:
-            SHIT = noR[0]
-            shitty = SHIT.split("Reference")
-            if len(shitty)!=0:
-                listPar = re.findall(tag, shitty[0], re.DOTALL)
-            else:
-                listPar = re.findall(tag, SHIT, re.DOTALL)
-        else:
-            listPar = re.findall(tag, text, re.DOTALL)
-            
-        ParDict = {}
+        tag = "<P>\n(.*?)\n</P>"
+        listPar = re.findall(tag, dataClean, re.DOTALL)
+        ParDict = {} 
         
         for i in range(0, len(listPar)):
             #print listPar[i]
@@ -155,6 +147,13 @@ class BSoupExtract(object):
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
         return finalCorr
+    
+    @staticmethod
+    def collapseDict(genEntry):
+        outputList = []
+        for _, v in genEntry.iteritems():
+            outputList.append(v)
+        return outputList
     
     def preSave(self):
         CorrectedEssays = {}
@@ -305,15 +304,7 @@ class BSoupExtract(object):
         self.savetoFile(trg_trainList,"targ-train.txt", None, False)
         #Generate test data and Save to file
         self.savetoFile(trg_evalList, "targ-val.txt", None, False)
-       
-    @staticmethod
-    def collapseDict(genEntry):
-        outputList = []
-        for _, v in genEntry.iteritems():
-            outputList.append(v)
-        return outputList
-    
-    
+           
     def dictGen(self, TextList):
         #This takes the generated corpus and turns it into a training dictionary
         OutSym = ["<blank> 1", "<unk> 2", "<s> 3","</s> 4"]
