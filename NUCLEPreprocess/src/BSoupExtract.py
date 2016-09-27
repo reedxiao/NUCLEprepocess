@@ -91,22 +91,6 @@ class BSoupExtract(object):
         text = self.extracted[docId]
         
         dataClean = re.sub("<REFERENCE>\n<P>(.*?)</P>\n</REFERENCE>", "", text, flags = re.DOTALL)
-        dataClean = re.sub("--.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("\[.*?\]", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("\(.*?\)", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("http*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("www*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("/\/\*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("{.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("p:.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("Retrieved.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("<{.*?}>", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("www.*?.com|www.*?.org", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("w.*?.com|w.*?.htm.*?| w.*?.pdf", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("Overview .*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("Bibliography.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("BIBLIOGRAPHY.*?", "", dataClean, flags = re.DOTALL)
-        dataClean = re.sub("References.*?", "", dataClean, flags = re.DOTALL)
         
         tag = "<P>\n(.*?)\n</P>"
         listPar = re.findall(tag, dataClean, re.DOTALL)
@@ -193,15 +177,17 @@ class BSoupExtract(object):
             #Separate line for each sentence
             if sorting == None:
                 for s in par:
-                    s = s.replace('!', ' !')
-                    s = s.replace('.', ' .')
-                    s = s.replace(',', ' ,')
-                    s = s.replace('?', ' ?')
-
-                    if evalu[0] == True: 
-                        f.write(s.lstrip()) 
-                    elif evalu[0] == False:                                                      
-                        f.write(s.lstrip()+"\n")   
+                    if s == ".":
+                        continue
+                    else:
+                        s = s.replace('!', ' !')
+                        s = s.replace('.', ' .')
+                        s = s.replace(',', ' ,')
+                        s = s.replace('?', ' ?')
+                        if evalu[0] == True: 
+                            f.write(s.lstrip()) 
+                        elif evalu[0] == False:                                                      
+                            f.write(s.lstrip()+"\n")   
                 print newFilename+"dict/eval  file saved"  
             elif sorting !=None:
                 for line in sorting:
@@ -209,11 +195,14 @@ class BSoupExtract(object):
                     eh = re.sub(r'[^\x00-\x7F]+',' ', h)
                     inline =  sent_tokenize(eh)
                     for s in inline:
-                        s = s.replace('!', ' !')
-                        s = s.replace('.', ' .')
-                        s = s.replace(',', ' ,')
-                        s = s.replace('?', ' ?')                                                       
-                        f.write(s.lstrip()+"\n")
+                        if s ==".":
+                            continue
+                        else:
+                            s = s.replace('!', ' !')
+                            s = s.replace('.', ' .')
+                            s = s.replace(',', ' ,')
+                            s = s.replace('?', ' ?')                                                       
+                            f.write(s.lstrip()+"\n")
         print newFilename+" file saved"    
     
     #Deprecated function replaced with length checked eval
