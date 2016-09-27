@@ -17,6 +17,7 @@ class BSoupExtract(object):
     '''
     Experiment with Beautiful Soup html, .sgml parser, which was shit, so had to write my own parser
     '''
+    
     def __init__(self, filename, foldername):
         '''
         Constructor: Takes in nucleDict Object
@@ -25,6 +26,9 @@ class BSoupExtract(object):
         self.fileName= filename 
         self.extracted = self.extractSentences()
         self.foldername = foldername
+        #Statistical count
+        self.NumberOfColloc = 0
+        self.NumberOfRegular = 0
         
     def extractSentences(self):
         extract = {}
@@ -124,8 +128,10 @@ class BSoupExtract(object):
                     if  ctype != typeEr:
                         #generate corrected sentence
                         sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
+                        self.NumberOfRegular+=1
                     else:
                         #Ignore collocation error
+                        self.NumberOfColloc +=1
                         continue
                 finalCorr[i] = sToBeCorr
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
@@ -145,17 +151,23 @@ class BSoupExtract(object):
         DocIDs = self.extractSentences().keys()
         #Pass doc Ids through paragraph correction
         print "Presave in progress"
-       
+        
         #This is meant to generate error exceptions
+        colloc = 0
+        norm = 0
+        print "Counting collocation errors"
         for i in DocIDs:
             for k, v in self.extractParagraph(i).iteritems():    
                 UncorrectedEssays[k] = v 
-            for k, v in self.genCorrections(i, 'Null Value').iteritems():                
+            for k, v in self.genCorrections(i, 'Null ignore').iteritems():                
                 CorrectedEssays[k] = v 
                 #print v
-        #Sort Corrected essays by keys
+    
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
+        
+        print "the number of collocation errors in the dataset: {}".format(self.NumberOfColloc)
+        print "DIfferent errors: {}".format(self.NumberOfRegular)
         
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
@@ -223,9 +235,9 @@ class BSoupExtract(object):
             for i in fileobject:
                 if(count <= train):
                     trainList.append(i) 
-                elif(count > train):
+                elif(count > train and count < train+evalD):
                     evalList.append(i)  
-                elif(count > train+evalD):
+                else:
                     testList.append(i)
                 count = count +1   
                 
@@ -260,16 +272,18 @@ class BSoupExtract(object):
         #Generate train, eval and test sets
         num_linesInput = len(finS)
         train = int(round(0.7*num_linesInput))
-        evalD =  int(round(0.3*num_linesInput))
+        evalD =  int(round(0.2*num_linesInput))
         
         #fin lists
         #Source
         src_trainList = []
         src_evalList = []
+        src_testList = []
         
         #Train
         trg_trainList = []
         trg_evalList = []
+        trg_testList = []
         #Final lists
         count  = 0
         
@@ -277,9 +291,12 @@ class BSoupExtract(object):
             if(count <= train):
                 src_trainList.append(i) 
                 trg_trainList.append(j) 
-            elif(count > train):
+            elif(count > train and count < train+evalD):
                 src_evalList.append(i) 
                 trg_evalList.append(j)
+            else:
+                src_testList.append(i) 
+                trg_testList.append(j)
             count = count +1    
         
         #Source text
@@ -287,12 +304,16 @@ class BSoupExtract(object):
         self.savetoFile(src_trainList,"src-train.txt", None, False)
         #Generate test data and Save to file
         self.savetoFile(src_evalList, "src-val.txt", None, False)
-       
+       #Generate test data and Save to file
+        self.savetoFile(src_testList, "src-test.txt", None, False)
+        
         #target text
         #Generate training data and save to file
         self.savetoFile(trg_trainList,"targ-train.txt", None, False)
         #Generate test data and Save to file
         self.savetoFile(trg_evalList, "targ-val.txt", None, False)
+        #Generate test data and Save to file
+        self.savetoFile(trg_testList, "targ-test.txt", None, False)
            
     def dictGen(self, TextList):
         #This takes the generated corpus and turns it into a training dictionary
