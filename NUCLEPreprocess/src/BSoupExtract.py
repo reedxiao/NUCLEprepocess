@@ -151,7 +151,7 @@ class BSoupExtract(object):
         for i in DocIDs:
             for k, v in self.extractParagraph(i).iteritems():    
                 UncorrectedEssays[k] = v 
-            for k, v in self.genCorrections(i, 'Wci').iteritems():                
+            for k, v in self.genCorrections(i, 'Null Value').iteritems():                
                 CorrectedEssays[k] = v 
                 #print v
         #Sort Corrected essays by keys
@@ -186,8 +186,7 @@ class BSoupExtract(object):
                     if evalu[0] == True: 
                         f.write(s.lstrip()) 
                     elif evalu[0] == False:                                                      
-                        f.write(s.lstrip()+"\n")
-                        
+                        f.write(s.lstrip()+"\n")   
                 print newFilename+"dict/eval  file saved"  
             elif sorting !=None:
                 for line in sorting:
@@ -209,23 +208,29 @@ class BSoupExtract(object):
         inputtxtfile = "../"+self.foldername+"/"+inputtxtfile
         num_linesInput = sum(1 for line in open(inputtxtfile))
         train = int(round(0.7*num_linesInput))
-        evalD =  int(round(0.3*num_linesInput))
+        evalD =  int(round(0.2*num_linesInput))
         
         trainList = []
         evalList = []
-        count = 0
+        testList = []
         
+        count = 0
         with open(inputtxtfile) as fileobject:
             for i in fileobject:
                 if(count <= train):
                     trainList.append(i) 
                 elif(count > train):
-                    evalList.append(i) 
-                count = count +1       
+                    evalList.append(i)  
+                elif(count > train+evalD):
+                    testList.append(i)
+                count = count +1   
+                
         #Generate training data and save to file
         self.savetoFile(filter(None, trainList), src_or_targ+"-train.txt", None, True)
-        #Generate test data and Save to file
+        #Generate validation data and Save to file
         self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)     
+        #Generate test data and Save to file
+        self.savetoFile(filter(None, testList), src_or_targ+"-test.txt", None, True)     
     
     def LengthCheckedEval(self):
         #Strip all paragraphs with different numbers of sentences
