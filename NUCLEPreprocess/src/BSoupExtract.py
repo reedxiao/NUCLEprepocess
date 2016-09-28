@@ -124,7 +124,6 @@ class BSoupExtract(object):
                     if  ctype != typeEr:
                         #generate corrected sentence
                         sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
-                    
                     #Count number of sentences
                     if ctype != typeEr and typeEr !=None:
                         self.NumberOfRegular +=1
@@ -135,6 +134,16 @@ class BSoupExtract(object):
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
         return finalCorr
+    
+    #Regex cleaner
+    @staticmethod
+    def junkClean(text):
+        v = re.sub("\(.*?\)| \.\)| \d\)\.", "", text, flags = re.DOTALL)
+        v = re.sub("\[.*?\]", "", v, flags = re.DOTALL)
+        v = re.sub("\(.*?", "", v, flags = re.DOTALL)
+        v = re.sub(" ?;", "", v, flags = re.DOTALL)
+        v = re.sub('\s+',' ', v)
+        return v
     
     @staticmethod
     def collapseDict(genEntry):
@@ -159,18 +168,18 @@ class BSoupExtract(object):
             #If generating sentences with Collocation errors
             if self.errorTag != None:
                 for k, v in self.genCorrections(i, None).iteritems():  
-                    CorrectedEssays[k] = v    
+                    CorrectedEssays[k] = self.junkClean(v)
                 #Change this!!
-                for k, v in self.genCorrections(i, self.errorTag).iteritems():                
-                    UncorrectedEssays[k] = v 
+                for k, v in self.genCorrections(i, self.errorTag).iteritems():          
+                    UncorrectedEssays[k] = self.junkClean(v)
                 #print v
             else:
                 #If generating G.E.C. data:
                 for k, v in self.extractParagraph(i).iteritems():    
-                    UncorrectedEssays[k] = v    
+                    UncorrectedEssays[k] = self.junkClean(v)   
                 #Change this!!
-                for k, v in self.genCorrections(i, self.errorTag).iteritems():                
-                    CorrectedEssays[k] = v 
+                for k, v in self.genCorrections(i, self.errorTag).iteritems():           
+                    CorrectedEssays[k] = self.junkClean(v) 
                 #print v
                 
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
@@ -182,7 +191,6 @@ class BSoupExtract(object):
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
                 CorrectedEssays[k] = v
-      
         return UncorrectedEssays, CorrectedEssays
     
     #Save original and corrected sentences
