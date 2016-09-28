@@ -260,6 +260,11 @@ class BSoupExtract(object):
         print "Number of NUCLE2014 length checked sentences : {}".format(num_linesInput)
         #Need to match this with numbers used in the paper
         #train = int(round(0.7*num_linesInput))
+        '''
+        Train, eval and test figures hard-coded to fulfill benchmarking from paper 
+        Compositional Sequence Labeling Models for Error Detection
+        in Learner Writing'''
+        
         train = 30953
         #evalD =  int(round(0.2*num_linesInput))
         evalD = 2720
