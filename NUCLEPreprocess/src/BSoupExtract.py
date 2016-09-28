@@ -109,9 +109,7 @@ class BSoupExtract(object):
         #Generates fully corrected corpus
         corrections = self.extractMistakesAndCorrection(docId)
         origPar = self.extractParagraph(docId)
-       
         genSentences = deepcopy(origPar)
-
         finalCorr = {}
         for i, v in corrections.iteritems():
             #If the paragraphs has sentences that need to be corrected
@@ -167,7 +165,7 @@ class BSoupExtract(object):
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
         
         print "the number of collocation errors in the dataset: {}".format(self.NumberOfColloc)
-        print "DIfferent errors: {}".format(self.NumberOfRegular)
+        print "Different errors: {}".format(self.NumberOfRegular)
         
         for k, v in UncorrectedEssays.iteritems():
             if k not in CorrectedEssays.keys():
@@ -200,7 +198,6 @@ class BSoupExtract(object):
                             f.write(s.lstrip()) 
                         elif evalu[0] == False:                                                      
                             f.write(s.lstrip()+"\n")   
-                print newFilename+"dict/eval  file saved"  
             elif sorting !=None:
                 for line in sorting:
                     h =  par[line]
@@ -215,38 +212,8 @@ class BSoupExtract(object):
                             s = s.replace(',', ' ,')
                             s = s.replace('?', ' ?')                                                       
                             f.write(s.lstrip()+"\n")
-        print newFilename+" file saved"    
+        print newFilename+": file saved"    
     
-    #Deprecated function replaced with length checked eval
-    def evalGen(self, inputtxtfile, src_or_targ):
-        '''This takes in the input and splits it into the train, test and eval sets for training
-        '''
-        inputtxtfile = "../"+self.foldername+"/"+inputtxtfile
-        num_linesInput = sum(1 for line in open(inputtxtfile))
-        train = int(round(0.7*num_linesInput))
-        evalD =  int(round(0.2*num_linesInput))
-        
-        trainList = []
-        evalList = []
-        testList = []
-        
-        count = 0
-        with open(inputtxtfile) as fileobject:
-            for i in fileobject:
-                if(count <= train):
-                    trainList.append(i) 
-                elif(count > train and count < train+evalD):
-                    evalList.append(i)  
-                else:
-                    testList.append(i)
-                count = count +1   
-                
-        #Generate training data and save to file
-        self.savetoFile(filter(None, trainList), src_or_targ+"-train.txt", None, True)
-        #Generate validation data and Save to file
-        self.savetoFile(filter(None, evalList), src_or_targ+"-val.txt", None, True)     
-        #Generate test data and Save to file
-        self.savetoFile(filter(None, testList), src_or_targ+"-test.txt", None, True)     
     
     def LengthCheckedEval(self):
         #Strip all paragraphs with different numbers of sentences
@@ -271,9 +238,12 @@ class BSoupExtract(object):
         
         #Generate train, eval and test sets
         num_linesInput = len(finS)
-        train = int(round(0.7*num_linesInput))
-        evalD =  int(round(0.2*num_linesInput))
-        
+        print "Number of NUCLE2014 length checked sentences : {}".format(num_linesInput)
+        #Need to match this with numbers used in the paper
+        #train = int(round(0.7*num_linesInput))
+        train = 30953
+        #evalD =  int(round(0.2*num_linesInput))
+        evalD = 2720
         #fin lists
         #Source
         src_trainList = []
