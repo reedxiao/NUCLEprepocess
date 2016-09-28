@@ -1,0 +1,3 @@
+#!/bin/sh
+"python preprocess.py --srcfile "+foldername+"/src-train.txt --targetfile "+foldername+"/targ-train.txt \
+--srcvalfile "+foldername+"/src-val.txt --targetvalfile "+foldername+"/targ-val.txt --outputfile "+foldername+"/"+saveName

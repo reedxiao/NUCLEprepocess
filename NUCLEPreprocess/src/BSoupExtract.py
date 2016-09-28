@@ -125,7 +125,7 @@ class BSoupExtract(object):
                         #generate corrected sentence
                         sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
                     #Count number of sentences
-                    if ctype != typeEr and typeEr !=None:
+                    if ctype != typeEr and typeEr ==None:
                         self.NumberOfRegular +=1
                     elif ctype == typeEr and typeEr != None:
                         self.NumberOfColloc +=1
@@ -134,8 +134,7 @@ class BSoupExtract(object):
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
         return finalCorr
-    
-    #Regex cleaner
+
     @staticmethod
     def junkClean(text):
         v = re.sub("\(.*?\)| \.\)| \d\)\.", "", text, flags = re.DOTALL)

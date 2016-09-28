@@ -7,12 +7,11 @@ Test script for hdf5 word embedding
 '''
 
 import hdf5wordembedding
-foldername = "../../NUCLEPreprocess/NUCLE2014"
-name = "nucle2014"
-dim = 100
+foldername = "../../NUCLEPreprocess/NUCLE2014_colloc"
+name = "nucle2014_colloc"
+dim = 300
 embeddingFile = "glove.6B."+str(dim)+"d.txt"
 embeddingFolder = "glove.6B"
-
 hdf5 = hdf5wordembedding.hdf5wordembedding(src=foldername+"/"+name+".src.dict",
                                            targ= foldername+"/"+name+".targ.dict",
                                            word_embeddings="../../../"+embeddingFile,

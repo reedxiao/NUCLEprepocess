@@ -1,0 +1,3 @@
+#!/bin/sh
+python preprocess.py --srcfile ../NUCLE2014/src-train.txt --targetfile ../NUCLE2014/targ-train.txt \
+--srcvalfile ../NUCLE2014/src-val.txt --targetvalfile ../NUCLE2014/targ-val.txt --outputfile ../NUCLE2014/nucle2014
