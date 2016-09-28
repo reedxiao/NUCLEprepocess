@@ -8,7 +8,6 @@ import os
 import collections
 import string
 import itertools
-
 from copy import deepcopy
 from nltk.tokenize import sent_tokenize
 import nltk
@@ -18,7 +17,7 @@ class BSoupExtract(object):
     Experiment with Beautiful Soup html, .sgml parser, which was shit, so had to write my own parser
     '''
     
-    def __init__(self, filename, foldername):
+    def __init__(self, filename, foldername, errorTag):
         '''
         Constructor: Takes in nucleDict Object
         extracts text between tags
@@ -26,6 +25,7 @@ class BSoupExtract(object):
         self.fileName= filename 
         self.extracted = self.extractSentences()
         self.foldername = foldername
+        self.errorTag = errorTag
         #Statistical count
         self.NumberOfColloc = 0
         self.NumberOfRegular = 0
@@ -93,7 +93,6 @@ class BSoupExtract(object):
             Why nucle2014 so terrible? Work in progress
         '''
         text = self.extracted[docId]
-        
         dataClean = re.sub("<REFERENCE>\n<P>(.*?)</P>\n</REFERENCE>", "", text, flags = re.DOTALL)
         
         tag = "<P>\n(.*?)\n</P>"
@@ -101,7 +100,6 @@ class BSoupExtract(object):
         ParDict = {} 
         
         for i in range(0, len(listPar)):
-            #print listPar[i]
             ParDict[docId, str(i)] = listPar[i]
         return ParDict
     
@@ -126,11 +124,13 @@ class BSoupExtract(object):
                     if  ctype != typeEr:
                         #generate corrected sentence
                         sToBeCorr = sToBeCorr.replace(origPar[i][start:end+10], cphrase, 1)
-                        self.NumberOfRegular+=1
-                    else:
-                        #Ignore collocation error
+                    
+                    #Count number of sentences
+                    if ctype != typeEr and typeEr !=None:
+                        self.NumberOfRegular +=1
+                    elif ctype == typeEr and typeEr != None:
                         self.NumberOfColloc +=1
-                        continue
+                        
                 finalCorr[i] = sToBeCorr
                 finalCorr = collections.OrderedDict(sorted(finalCorr.items()))
             #Else if the paragraphs have no incorrect parts
@@ -153,18 +153,30 @@ class BSoupExtract(object):
         #This is meant to generate error exceptions
         colloc = 0
         norm = 0
+        
         print "Counting collocation errors"
         for i in DocIDs:
-            for k, v in self.extractParagraph(i).iteritems():    
-                UncorrectedEssays[k] = v 
-            for k, v in self.genCorrections(i, 'Null ignore').iteritems():                
-                CorrectedEssays[k] = v 
+            #If generating sentences with Collocation errors
+            if self.errorTag != None:
+                for k, v in self.genCorrections(i, None).iteritems():  
+                    CorrectedEssays[k] = v    
+                #Change this!!
+                for k, v in self.genCorrections(i, self.errorTag).iteritems():                
+                    UncorrectedEssays[k] = v 
                 #print v
-    
+            else:
+                #If generating G.E.C. data:
+                for k, v in self.extractParagraph(i).iteritems():    
+                    UncorrectedEssays[k] = v    
+                #Change this!!
+                for k, v in self.genCorrections(i, self.errorTag).iteritems():                
+                    CorrectedEssays[k] = v 
+                #print v
+                
         CorrectedEssays = collections.OrderedDict(sorted(CorrectedEssays.items()))
         UncorrectedEssays = collections.OrderedDict(sorted(UncorrectedEssays.items()))
         
-        print "the number of collocation errors in the dataset: {}".format(self.NumberOfColloc)
+        print "The number of collocation errors in the dataset: {}".format(self.NumberOfColloc)
         print "Different errors: {}".format(self.NumberOfRegular)
         
         for k, v in UncorrectedEssays.iteritems():
@@ -214,7 +226,6 @@ class BSoupExtract(object):
                             f.write(s.lstrip()+"\n")
         print newFilename+": file saved"    
     
-    
     def LengthCheckedEval(self):
         #Strip all paragraphs with different numbers of sentences
         src, trg = self.preSave()
@@ -255,8 +266,8 @@ class BSoupExtract(object):
         trg_evalList = []
         trg_testList = []
         #Final lists
-        count  = 0
         
+        count  = 0    
         for i, j in zip(finS, finT):
             if(count <= train):
                 src_trainList.append(i) 
