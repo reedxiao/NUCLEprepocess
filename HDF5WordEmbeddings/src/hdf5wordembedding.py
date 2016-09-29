@@ -59,7 +59,7 @@ class hdf5wordembedding(object):
         
         indexedEmbeddings = []
         path = os.path.join(self.foldername, name+".txt")
-                
+        
         print ">>>Generating word embeddings"
         
         #load word embeddings and add them to dictionary for faster search
@@ -73,7 +73,8 @@ class hdf5wordembedding(object):
             v = word.split()[1:]
             word_vec_dict[w.lower()] = v
         print "Generated embedding dictionary"
-
+        
+        #Consider making this parallel
         for aWord in dictWord:
             word = aWord.split()[0]  
             if word.lower() in word_vec_dict:

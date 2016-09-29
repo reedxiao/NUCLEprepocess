@@ -1,7 +1,7 @@
 '''
 Created on 20/09/2016
 
-@author: kiarie Ndegwa
+@author: Kiarie Ndegwa
 
 Test script for hdf5 word embedding
 '''
