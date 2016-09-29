@@ -154,7 +154,7 @@ class hdf5wordembedding(object):
             name =hdf5Name+"_"+"dec_"
       
         print "Generating hdf5 file"
-        hf = h5py.File('../../'+name+'data.hdf5', 'w') 
+        hf = h5py.File(self.foldername+"/"+name+'_data.hdf5', 'w') 
         
         #Write numpy array to hdf5 file
         print "Adding numpy array to hdf5 file"
@@ -163,7 +163,7 @@ class hdf5wordembedding(object):
     
     def readhdf5(self, name):
         #Test generated hdf5 file
-        filename = '../../'+name+'data.hdf5'
+        filename = self.foldername+"/"+name+'_data.hdf5'
         
         with h5py.File(filename,'r') as hf:
             print('List of arrays in this file: \n', hf.keys())
